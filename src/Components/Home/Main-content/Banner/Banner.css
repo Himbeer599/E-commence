@@ -1,0 +1,40 @@
+.banner-container {
+    position: relative;
+    width: 690px; /* 设置宽度 */
+    height: 458px; /* 设置高度 */
+    overflow: hidden; /* 隐藏溢出部分 */
+    margin: auto; /* 居中对齐 */
+}
+
+.banner {
+    width: 100%; /* 100% 宽度 */
+    height: 100%; /* 100% 高度 */
+    display: flex; /* 使用 flexbox */
+    transition: transform 0.5s ease-in-out; /* 设置平滑过渡 */
+    transform: translateX(-${props => props.currentIndex * 100}%); /* 根据当前索引移动 */
+}
+
+.banner-image {
+    width: 690px; /* 设置图片宽度 */
+    height: 458px; /* 设置图片高度 */
+}
+
+.arrow {
+    position: absolute;
+    top: 50%; /* 垂直居中 */
+    transform: translateY(-50%); /* 垂直居中 */
+    font-size: 30px; /* 字体大小 */
+    color: white; /* 字体颜色 */
+    background-color: rgba(0, 0, 0, 0.5); /* 背景颜色 */
+    padding: 10px; /* 内边距 */
+    cursor: pointer; /* 鼠标指针 */
+    z-index: 10; /* 确保箭头在上方 */
+}
+
+.left-arrow {
+    left: 10px; /* 左侧位置 */
+}
+
+.right-arrow {
+    right: 10px; /* 右侧位置 */
+}

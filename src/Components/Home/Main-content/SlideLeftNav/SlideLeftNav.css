@@ -1,0 +1,64 @@
+.main-content .slide-nav {
+    width: 190px;
+    height: 458px;
+    background-color: #F4F4F4;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    justify-content: space-around;
+    align-items: center;
+}
+.main-content .slide-nav li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    height: 60px;
+    width: 176px;
+    /* width: auto; */
+    line-height: 28px;
+    padding-left: 16px;
+}
+.main-content .slide-nav li:hover {
+    background-color: #DD302D;
+}
+.main-content .slide-nav li:hover>a {
+    color: white;
+}
+
+.slide-nav .second-menu {
+    width: 680px;
+    height: 458px;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 190px;
+    padding-left: 20px;
+    display: none;
+}
+.main-content .slide-nav li:hover .second-menu {
+    display: block;
+}
+.slide-nav .second-menu dl {
+    height: 36px;
+    line-height: 36px;
+    /* margin-bottom: 20px; */
+}
+.slide-nav .second-menu dl:first-child {
+    margin-top: 10px;
+}
+.slide-nav .second-menu dt {
+    font-weight: bold;
+    float: left;
+    width: auto;
+    margin-right: 10px;
+    /* white-space: nowrap; */
+}
+.slide-nav .second-menu dd {
+    float: left;
+}
+.slide-nav .second-menu dd a {
+    padding: 0 10px;
+    border-left: 1px solid #666;
+} 
