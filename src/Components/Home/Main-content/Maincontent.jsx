@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Maincontent.css'
-import SlideLeftNav from './SlideLeftNav/SlideLeftNav'
+import SlideNav from './SlideLeftNav/SlideLeftNav'
 import Banner from './Banner/Banner';
 
 export default class Maincontent extends Component {
@@ -8,7 +8,7 @@ export default class Maincontent extends Component {
     return (
         <div className="main-content">
           <div className="mainmiddel">
-              <SlideLeftNav/>
+              <SlideNav/>
               <Banner/>
           </div>
        </div>
