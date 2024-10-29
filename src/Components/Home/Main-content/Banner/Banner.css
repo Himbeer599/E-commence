@@ -15,7 +15,7 @@
     height: 100%; /* 100% 高度 */
     display: flex; /* 使用 flexbox */
     transition: transform 0.5s ease-in-out; /* 设置平滑过渡 */
-    transform: translateX(-${props => props.currentIndex * 100}%); /* 根据当前索引移动 */
+    /* transform: translateX(-${props => props.currentIndex * 100}%); 根据当前索引移动 */
 }
 
 .main-content .banner-image {

@@ -1,11 +1,12 @@
-.container{
-    width: 1190px;
-    margin: 0 auto;
-    height: 30px;
-}
 .topbar{
     height: 30px;
     background-color: #ececec;
+}
+.container{
+    display:flex;
+    /* width: 1190px; */
+    margin: 0 auto;
+    height: 30px;
 }
 .welcome {
     height: 30px;

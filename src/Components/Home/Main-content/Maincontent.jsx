@@ -8,7 +8,7 @@ export default class Maincontent extends Component {
   render() {
     return (
         <div className="main-content">
-          <div className="container clearfix">
+          <div className="main-c1">
               <SlideLeftNav/>
               <Banner/>
           </div>

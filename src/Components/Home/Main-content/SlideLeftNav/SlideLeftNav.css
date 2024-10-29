@@ -1,5 +1,5 @@
 .main-content .slide-nav {
-    width: 230px;
+    width: 250px;
     height: 458px;
     background-color: #F4F4F4;
     position: relative;
@@ -15,8 +15,8 @@
     align-items: center;
     font-size: 14px;
     height: 60px;
-    width: 230px;
-    /* width: auto; */
+    /* width: 230px; */
+    width: auto;
     line-height: 28px;
     padding-left: 16px;
 }

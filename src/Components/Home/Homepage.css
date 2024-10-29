@@ -1,4 +1,17 @@
-/* Homepage.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* height: 100vh;   */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
  .homepage-container {
     display: flex;
     flex-direction: column;
@@ -11,7 +24,6 @@
     text-align: center;
     margin: 0 auto;
    } 
-  
   h1 {
     color: #333; /* Dark gray for the title */
   }

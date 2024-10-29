@@ -11,14 +11,16 @@ import './Homepage.css'
 
 const Homepage = () => {
   return (
-    <div className="homepage-container">
+    <div>
+      <div className="homepage-1">
       <Topbar/>
       <Header/>
       <Mainmenu/>
       <Maincontent/>
       <BestSeller/>
       <Footer/>
-      {/* <Footer1/> */}
+        {/* <Footer1/> */}
+      </div>
     </div>
 
   );

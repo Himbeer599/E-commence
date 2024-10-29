@@ -25,7 +25,6 @@ function Login() {
           document.body.style.backgroundImage = `url(${images[index]})`;
         }, 100000); 
         return () => clearInterval(interval); // 清理定时器
-        document.body.style.backgroundImage = '';
       }, [images]);
 
   const navigate = useNavigate();
