@@ -1,21 +1,18 @@
-/* #region主要内容区start */
 .main-content {
     margin-top: 10px;
     /* width: 1200px; */
     align-items: flex-start;
     display: flex;
 }
-.main-c1 {
+.mainmiddel {
     display: flex;
+    /* align-items: center; */
 }
 .container {
     display: flex;
     align-items: flex-start; /* 顶部对齐 */
 }
-.container .slide-left-nav {
-    width: 230px; 
-}
+
 .container .banner {
-    /* flex-grow: 1; */
-    flex:auto;
-}
+    flex-grow: 1;
+   }

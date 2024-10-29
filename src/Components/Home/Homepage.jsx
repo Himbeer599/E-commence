@@ -12,14 +12,13 @@ import './Homepage.css'
 const Homepage = () => {
   return (
     <div>
-      <div className="homepage-1">
+      <div>
       <Topbar/>
       <Header/>
       <Mainmenu/>
       <Maincontent/>
       <BestSeller/>
       <Footer/>
-        {/* <Footer1/> */}
       </div>
     </div>
 

@@ -1,25 +1,36 @@
+
 .main-nav {
     height: 60px;
     border-bottom: 1px solid #DD302D;
     display: flex;
+    align-items: center;
+    font-style: normal;
 }
 .main-nav .all-types {
-    width: 200px;
-    height: 48px;
+    width: 250px;
+    height: 61px;
     background-color:#DD302D;
+    border-radius:0cm;
     color: white;
     text-align: center;
     font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* box-sizing: border-box; */
 }
 .main-nav .main-nav-list {
-    height: 48px;
-    line-height: 48px;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin-left: 20px;
 }
 .main-nav .main-nav-list li {
-   float:left;
    margin: 0 10px;
    font-size: 16px;
 }
+.main-nav .main-nav-list li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+ }

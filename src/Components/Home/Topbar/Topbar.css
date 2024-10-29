@@ -2,47 +2,57 @@
     height: 30px;
     background-color: #ececec;
 }
-.container{
-    display:flex;
-    /* width: 1190px; */
-    margin: 0 auto;
-    height: 30px;
-}
-.welcome {
-    height: 30px;
-    line-height: 30px;
-    font-size: 0px;
-    color: #666;
-}
-.welcome span, .welcome a {
-    font-size: 12px;
-}
-.welcome .hello {
-    margin-right: 10px;
-}
-.welcome .login {
-    padding-right: 10px;
-    border-right: 1px solid #666;
-    }
-    .welcome .register {
-    padding-left: 10px;
-    }
-    .topbar-nav .list {
+    .container{
+        display:flex;
+        /* width: 1190px; */
+        margin: 0 auto;
         height: 30px;
-        line-height: 30px;
-        margin-left: 100px;
+        width: 100%;
     }
-    .topbar-nav .list li {
-        float: left;
-    }
-    .topbar-nav .list li a {
-        padding: 0 15px;
-        border-right: 1px solid #666;
-    }
-    .topbar-nav .list li:first-child a {
-        padding-left: 0px;
-    }
-    .topbar-nav .list li:last-child a {
-        padding-right: 0px;
-        border: 0px;
-    }
+        .welcome {
+            height: 30px;
+            /* align-items: center; */
+            line-height: 30px;
+            font-size: 0px;
+            color: #666;
+        }
+                .welcome span, .welcome a {
+                    font-size: 12px;
+                }
+                .welcome .hello {
+                    margin-right: 10px;
+                }
+                .welcome .login {
+                    padding-right: 10px;
+                    border-right: 1px solid #666;
+                }
+                .welcome .register {
+                    padding-left: 10px;
+                }
+        .topbar-nav {
+                display: flex;
+                justify-content: flex-end;
+                padding-right:2px
+        }
+                .topbar-nav .list {
+                    display: flex;
+                    align-items: center;
+                    height: 30px;
+                    padding: 0px;
+                    list-style: none;
+                    margin-left: 300px;
+                    
+                }
+                .topbar-nav .list li a {
+                    padding: 0 15px;
+                    border-right: 1px solid #666;
+                    text-decoration: none;
+                    color:inherit;
+                }
+                .topbar-nav .list li:first-child a {
+                    padding-left: 0px;
+                }
+                .topbar-nav .list li:last-child a {
+                    padding-right: 0px;
+                    border-right: none;
+                }

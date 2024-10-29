@@ -8,38 +8,38 @@ export default class SlideLeftNav extends Component {
         <li>
             <a href="#">Entertainment Electronics</a>
              <div className="second-menu">
-                <dl >
+                <dl>
                     <dt><a href="#">Visual Entertainment Devices</a></dt>
                     <dd><a href="#">Televisions</a></dd>
                     <dd><a href="#">Projectors</a></dd>
                     <dd><a href="#">DVD/Blu-ray players</a></dd>
                 </dl>
-                <dl >
+                <dl>
                     <dt><a href="#">Audio Equipment</a></dt>
                     <dd><a href="#">Home theater systems</a></dd>
                     <dd><a href="#">Speakers</a></dd>
                     <dd><a href="#">Headphones and earphones</a></dd>
                     {/* <dd><a href="#">Turntables and vinyl players</a></dd> */}
                 </dl>
-                <dl >
+                <dl>
                     <dt><a href="#">Gaming Consoles and Accessories</a></dt>
                     <dd><a href="#">Consoles</a></dd>
                     <dd><a href="#">VR headsets</a></dd>
                     <dd><a href="#">Accessories</a></dd>
                 </dl>
-                <dl >
+                <dl>
                     <dt><a href="#">Personal Media Devices</a></dt>
                     <dd><a href="#">Tablets</a></dd>
                     <dd><a href="#">Portable media players</a></dd>
                     <dd><a href="#">E-readers</a></dd>
                 </dl>
-                <dl >
+                <dl>
                     <dt><a href="#">Recording and Playback Devices</a></dt>
                     <dd><a href="#">Cameras</a></dd>
                     <dd><a href="#">Drones</a></dd>
                     <dd><a href="#">Microphones and audio recorders</a></dd>
                 </dl>
-                <dl >
+                <dl>
                     <dt><a href="#">Smart Entertainment Devices</a></dt>
                     <dd><a href="#">Smart speakers</a></dd>
                     <dd><a href="#">Smart displays</a></dd>
