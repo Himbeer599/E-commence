@@ -9,6 +9,8 @@
     width: 508px;
     height: 34px;
     border: 1px solid #DD302D;
+    border-radius: 0%;
+    flex:auto;
 }
 .header .search button {
     width: 80px;

@@ -1,101 +1,20 @@
 /* #region主要内容区start */
 .main-content {
     margin-top: 10px;
+    width: 1200px;
+    align-items: flex-start;
+    display: flex;
+    height: fit-content;
 }
-
-.main-content .banner {
-    width: 690px;
-    height: 458px;
-    background-color: green;
-    margin: 0px 10px;
+.container {
+    display: flex;
+    align-items: flex-start; /* 顶部对齐 */
+    height: 500px;
 }
-
-.slide-other .message {
-padding: 0 14px;
-width: 260px;
-height: 156px;
-border: 1px solid #D9D9D9;
+.container .slide-left-nav {
+    width: 230px; 
 }
-.slide-other .message .title {
-    height: 38px;
-    line-height: 38px;
-    border-bottom: 1px solid #D9D9D9;
-    }
-.slide-other .message .title span {
-       font-size: 14px;
-    }
-.slide-other .message .title a {
-       font-size: 12px;
-    }
-.slide-other .message-list li {
- height: 26px;
- line-height: 26px;
+.container .banner {
+    /* flex-grow: 1; */
+    flex:auto;
 }
-.main-content .slide-other {
-    width: 290px;
-    height: 458px;
-}
-.slide-other .other-nav {
-    margin-top: 10px;
-    width: 290px;
-    height: 290px;
-    overflow: hidden;
-    }
-.slide-other .other-nav .other-nav-list li {
-    height:70px;
-    width:48px;
-    float:left;
-    margin:0 11px;
-    text-align: center;
-    }    
-    .slide-other .other-nav .other-nav-list li:first-child {
-        margin-left: 16px;
-    }
-    .slide-other .other-nav .other-nav-list:first-child {
-        margin-top: 16px;
-    }
-    .slide-other .other-nav .other-nav-list:nth-child(2) {
-        margin: 17px 0;
-    }
-    /* .slide-other .other-nav-list .picture {
-        background-image: url('../../images/精灵图-侧边功能.png');
-        width: 48px;
-        height: 48px;
-    }
-    .other-nav-list:nth-child(1) li:nth-child(1) .picture {
-        background-position: 0 0px;
-    }
-    .other-nav-list:nth-child(1) li:nth-child(2) .picture {
-        background-position: -48px 0px;
-    }
-    .other-nav-list:nth-child(1) li:nth-child(3) .picture {
-        background-position: -96px 0px;
-    }
-    .other-nav-list:nth-child(1) li:nth-child(4) .picture {
-        background-position: -144px 0px;
-    }
-    .other-nav-list:nth-child(2) li:nth-child(1) .picture {
-        background-position: 0px -48px;
-    }
-    .other-nav-list:nth-child(2) li:nth-child(2) .picture {
-        background-position: -48px -48px;
-    }
-    .other-nav-list:nth-child(2) li:nth-child(3) .picture {
-        background-position: -96px -48px;
-    }
-    .other-nav-list:nth-child(2) li:nth-child(4) .picture {
-        background-position: -144px -48px;
-    }
-    .other-nav-list:nth-child(3) li:nth-child(1) .picture {
-        background-position: 0px -96px;
-    }
-    .other-nav-list:nth-child(3) li:nth-child(2) .picture {
-        background-position: -48px -96px;
-    }
-    .other-nav-list:nth-child(3) li:nth-child(3) .picture {
-        background-position: -96px -96px;
-    }
-    .other-nav-list:nth-child(3) li:nth-child(4) .picture {
-        background-position: -144px -96px;
-    } */
-/* #endregion主要内容区end */

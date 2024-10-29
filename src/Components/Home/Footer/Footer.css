@@ -1,0 +1,51 @@
+.footer {
+    background-color: #333; /* Dark background */
+    color: white; /* White text */
+    padding: 20px 0; /* Vertical padding */
+    display: flex;
+    height: 140px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.footer-container {
+    display: flex; /* Flex layout */
+    justify-content: space-around; /* Space out sections */
+    flex-wrap: wrap; /* Wrap sections on smaller screens */
+    max-width: 1200px; /* Max width for the footer */
+    margin: auto; /* Center the footer */
+}
+
+.footer-section {
+    flex: 1; /* Flex-grow for equal space */
+    min-width: 200px; /* Minimum width for each section */
+    margin: 10px; /* Margin for spacing */
+}
+
+.footer-section h4 {
+    margin-bottom: 10px; /* Spacing under the header */
+}
+
+.footer-section ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+}
+
+.footer-section ul li {
+    margin: 5px 0; /* Vertical spacing between links */
+}
+
+.footer-section ul li a {
+    color: white; /* Link color */
+    text-decoration: none; /* No underline */
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+.footer-bottom {
+    text-align: center; /* Centered text */
+    margin-top: 20px; /* Spacing above bottom text */
+    font-size: 0.9rem; /* Smaller font size */
+}

@@ -1,0 +1,49 @@
+.footer {
+    height: 440px;
+    margin-top: 48px;
+    background-color: #483e3e;
+}
+.links-list {
+    float: left;
+    width: 190px;
+    height: 176px;
+    margin-top: 48px;
+    margin-right: 10px;
+}
+.links-list:last-child {
+    margin-right: 0px;
+}
+.links-list a {
+    color: white;
+    font-size: 14px;
+}
+.line {
+    margin-top: 22px;
+    height: 1px;
+    background-color: #584D4D;
+}
+.bottom-links {
+    text-align: center;
+}
+.bottom-links-list {
+    display: inline-block;
+}
+.bottom-links-list li {
+    float: left;
+}
+.bottom-links-list li a {
+    padding: 0 26px;
+    border-right: 1px solid white;
+    color: white;
+}
+.bottom-links-list li:first-child a{
+    padding-left: 0px;
+}
+.bottom-links-list li:last-child a{
+    padding-right: 0px;
+    border: 0px;
+}
+.copyright {
+    color: white;
+    margin-top: 10px;
+}

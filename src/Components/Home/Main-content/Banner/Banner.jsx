@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Banner.css'
 // import images from '../../Pictures';
-
+// import PHOTOS from '../../Pictures'
 const imageNames = [
     'electronics.jpg', // 需要和文件夹中的文件名一致
     'electronics2.jpg',

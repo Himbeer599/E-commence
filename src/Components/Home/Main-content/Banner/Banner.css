@@ -1,12 +1,16 @@
-.banner-container {
+.main-content .banner-container {
     position: relative;
-    width: 690px; /* 设置宽度 */
+    width: 970px; /* 设置宽度 */
     height: 458px; /* 设置高度 */
     overflow: hidden; /* 隐藏溢出部分 */
-    margin: auto; /* 居中对齐 */
+    margin-left: 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.banner {
+.main-content .banner {
     width: 100%; /* 100% 宽度 */
     height: 100%; /* 100% 高度 */
     display: flex; /* 使用 flexbox */
@@ -14,12 +18,13 @@
     transform: translateX(-${props => props.currentIndex * 100}%); /* 根据当前索引移动 */
 }
 
-.banner-image {
-    width: 690px; /* 设置图片宽度 */
-    height: 458px; /* 设置图片高度 */
+.main-content .banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.arrow {
+.main-content .arrow {
     position: absolute;
     top: 50%; /* 垂直居中 */
     transform: translateY(-50%); /* 垂直居中 */
@@ -31,10 +36,10 @@
     z-index: 10; /* 确保箭头在上方 */
 }
 
-.left-arrow {
+.main-content .left-arrow {
     left: 10px; /* 左侧位置 */
 }
 
-.right-arrow {
+.main-content .right-arrow {
     right: 10px; /* 右侧位置 */
 }

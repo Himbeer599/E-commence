@@ -4,6 +4,9 @@ import Topbar from './Topbar/Topbar';
 import Header from './Header/Header';
 import Mainmenu from './Main-menu/Mainmenu';
 import Maincontent from './Main-content/Maincontent';
+import BestSeller from './BestSeller/BestSeller';
+import Footer from './Footer/Footer'
+// import Footer1 from './Footer1/Footer1';
 import './Homepage.css'
 
 const Homepage = () => {
@@ -13,6 +16,9 @@ const Homepage = () => {
       <Header/>
       <Mainmenu/>
       <Maincontent/>
+      <BestSeller/>
+      <Footer/>
+      {/* <Footer1/> */}
     </div>
 
   );

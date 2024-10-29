@@ -1,8 +1,7 @@
 .main-nav {
-    height: 48px;
+    height: 60px;
     border-bottom: 1px solid #DD302D;
     display: flex;
-
 }
 .main-nav .all-types {
     width: 200px;

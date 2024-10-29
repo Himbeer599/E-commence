@@ -8,15 +8,11 @@ export default class Maincontent extends Component {
   render() {
     return (
         <div className="main-content">
-        <div className="container clearfix">
-            <SlideLeftNav/>;
-            <Banner/>;
-
-            {/* <div class="banner leftfix"> */}
-                {/* <img src={bannerfOTO} style={{height:'458px', width:'690px'}} */}
-       
-        </div>
-      </div>
+          <div className="container clearfix">
+              <SlideLeftNav/>
+              <Banner/>
+          </div>
+       </div>
     )
 }
 }

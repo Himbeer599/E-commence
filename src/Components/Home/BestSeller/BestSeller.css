@@ -1,0 +1,118 @@
+/* Bestseller Section */
+.bestseller {
+    padding: 20px;
+    background-color: skyblue;
+    text-align: center;
+    width: 1200px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    height: 300px;
+    overflow: hidden;
+}
+
+/* Bestseller Title */
+.bestseller h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Wrapper for the bestseller items and scroll buttons */
+.bestseller-wrapper {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    padding: 0 20px; /* Space for scroll buttons */
+}
+
+/* Scroll buttons */
+.scroll-left,
+.scroll-right {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background-color 0.3s;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.scroll-left {
+    left: 0;
+}
+
+.scroll-right {
+    right: 0;
+}
+
+.scroll-left:hover,
+.scroll-right:hover {
+    background-color: #45a049;
+}
+
+/* Container for Bestseller Items */
+.bestseller-container {
+    display: flex;
+    padding: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    cursor: grab;
+}
+
+/* Scrolling styles */
+.bestseller-container:active {
+    cursor: grabbing;
+}
+
+/* Individual Bestseller Item */
+.bestseller-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    min-width: 200px;
+    margin-right: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Style */
+.bestseller-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Title Style */
+.bestseller-item h3 {
+    font-size: 1.25rem;
+    margin: 10px 0;
+}
+
+/* Price Style */
+.price {
+    font-size: 1.15rem;
+    color: #e91e63;
+}
+
+/* Button Style */
+.buy-now {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+/* Button Hover Effect */
+.buy-now:hover {
+    background-color: #45a049;
+}
