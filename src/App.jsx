@@ -1,9 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './Components/Login/Login';  
-import Registerpage from './Components/Register/Registerpage';
-import Homepage from './Components/Home/Homepage';
-
+import Login from './pages/Login/Login';  
+import Registerpage from './pages/Register/Registerpage';
+import Homepage from './pages/HomePage/Homepage';
 function App() {
   return (
     <Router>
@@ -20,9 +19,9 @@ export default App;
 
 
 // import React, { useState } from 'react';
-// import Hallo from "./Components/Hallo/Hallo.jsx";
-// import './Components/Hallo/Hallo.css'; // 引入CSS文件
-// import mondImage from './Components/Hallo/Mond.jpg'
+// import Hallo from "./pages/Hallo/Hallo.jsx";
+// import './pages/Hallo/Hallo.css'; // 引入CSS文件
+// import mondImage from './pages/Hallo/Mond.jpg'
 
 // function App() {
 //   const [showImage, setShowImage] = useState(false); // 定义状态来控制图片的显示

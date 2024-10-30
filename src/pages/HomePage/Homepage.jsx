@@ -10,7 +10,6 @@ import './Homepage.css'
 
 const Homepage = () => {
   return (
-    <div>
       <div>
       <Topbar/>
       <Header/>
@@ -19,7 +18,6 @@ const Homepage = () => {
       <BestSeller/>
       <Footer/>
       </div>
-    </div>
 
   );
 };
