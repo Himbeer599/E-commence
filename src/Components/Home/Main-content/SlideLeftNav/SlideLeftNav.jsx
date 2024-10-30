@@ -1,19 +1,19 @@
 
 import React, { useEffect, useState } from 'react';
 import './SlideLeftNav.css'
+
 const SlideNav = () => {
     const [menuItems, setMenuItems] = useState([]);
     useEffect(() => {
         const fetchMenuItems = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/getproduct');
+                const response = await fetch('http://192.168.2.31:5000/api/products/sidenavi');
                 const data = await response.json();
                 setMenuItems(data);
             } catch (error) {
-                console.error('Error fetching menu items1111:', error);
+                console.error('Error fetching menu items!:', error);
             }
         };
-
         fetchMenuItems();
     }, []);
     // menuItems.map((menuItem, index) => (

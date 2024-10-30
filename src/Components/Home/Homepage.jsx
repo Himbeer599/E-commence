@@ -6,7 +6,6 @@ import Mainmenu from './Main-menu/Mainmenu';
 import Maincontent from './Main-content/Maincontent';
 import BestSeller from './BestSeller/BestSeller';
 import Footer from './Footer/Footer'
-// import Footer1 from './Footer1/Footer1';
 import './Homepage.css'
 
 const Homepage = () => {

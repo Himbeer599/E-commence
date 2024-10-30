@@ -10,7 +10,7 @@ const Bestseller = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch('/api/products');
+                const response = await fetch('http://192.168.2.31:5000/api/products/bestseller');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
