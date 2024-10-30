@@ -62,62 +62,64 @@ function Login() {
   
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        {error && <p className="error-message">{error}</p>}
-        <div className="form-container"> 
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <input
-              type="username"
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Geben Sie einen Benutzername ein"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">E-Mail:</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Geben Sie Ihre E-Mail ein"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Geben Sie Ihr Passwort ein"
-            />
-            <div className="forgot-password">
-              <a href="/forgot-password">Forgot your password?</a>
+    <div className="loginbody">
+      <div className="login-container">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          {error && <p className="error-message">{error}</p>}
+          <div className="form-container"> 
+            <div className="form-group">
+              <label htmlFor="username">Username</label>
+              <input
+                type="username"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Geben Sie einen Benutzername ein"
+              />
             </div>
-          </div>
-          {/* <div className="checkbox-group"> */}
-            <span className="checkbox-group">
-            <input
-              type="checkbox"
-              id="keepLoggedIn"
-              checked={keepLoggedIn}
-              onChange={() => setKeepLoggedIn(!keepLoggedIn)}
-            />
-            </span>
-            <div className='keepLoggin'>
-            <label htmlFor="keepLoggedIn">Keep me logged in</label>
+            <div className="form-group">
+              <label htmlFor="email">E-Mail:</label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Geben Sie Ihre E-Mail ein"
+              />
             </div>
-        </div>
-        <button type="submit" className="login-button">Log in</button>
-        <Link to="./Registerpage">
-        <button type="button" className="register-button">Register</button>
-        </Link>
-      </form>
+            <div className="form-group">
+              <label htmlFor="password">Password:</label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Geben Sie Ihr Passwort ein"
+              />
+              <div className="forgot-password">
+                <a href="/forgot-password">Forgot your password?</a>
+              </div>
+            </div>
+            {/* <div className="checkbox-group"> */}
+              <span className="checkbox-group">
+              <input
+                type="checkbox"
+                id="keepLoggedIn"
+                checked={keepLoggedIn}
+                onChange={() => setKeepLoggedIn(!keepLoggedIn)}
+              />
+              </span>
+              <div className='keepLoggin'>
+              <label htmlFor="keepLoggedIn">Keep me logged in</label>
+              </div>
+          </div>
+          <button type="submit" className="login-button">Log in</button>
+          <Link to="./Registerpage">
+          <button type="button" className="register-button">Register</button>
+          </Link>
+        </form>
+      </div>
     </div>
   );
 };

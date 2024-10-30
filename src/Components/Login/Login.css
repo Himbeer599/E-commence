@@ -1,15 +1,16 @@
 
-body {
+.loginbody {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* height: 100vh; */
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* width: 300px; */
 }
 
 /* 登录容器 */
@@ -21,6 +22,9 @@ body {
   max-width: 400px;
   width: 100%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
 }
 
 /* 标题样式 */
@@ -29,6 +33,7 @@ body {
   color: #333;
   font-size: 28px;
   font-weight: bold;
+  
 }
 /* 设置表单容器样式 */
 .form-container {
@@ -50,7 +55,7 @@ body {
   color: #555;
 }
 
-.form-group input[type="text"],
+.form-group input[type="username"],
 .form-group input[type="email"],
 .form-group input[type="password"] {
   width: 100%;
@@ -59,6 +64,7 @@ body {
   border-radius: 5px;
   font-size: 16px;
   transition: border-color 0.3s ease-in-out;
+  height: 41px;
 }
 
 .form-group input[type="text"]:focus,
