@@ -10,21 +10,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 100%; */
-}
-
- /* .homepage-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    width: 1200px; */
-    /* min-height: 800px; */
-    /* height: 100vh;  */
-    /* background-color: #f5f5f5; 
-    text-align: center;
-    margin: 0 auto;
-   }  */
+  /* widt
+  
   h1 {
     color: #333; /* Dark gray for the title */
   }
@@ -88,7 +75,7 @@ input,button {
 
 /* 风格设置 */
 body {
-  font: 12px/1.5 "Microsoft YaHei", Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+  font:  Tahoma, Helvetica, "\5b8b\4f53", sans-serif;
   color: #333;
 }
 
@@ -115,3 +102,16 @@ a:hover {
   display: block;
   clear: both;
 }
+
+ /* .homepage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 1200px; */
+    /* min-height: 800px; */
+    /* height: 100vh;  */
+    /* background-color: #f5f5f5; 
+    text-align: center;
+    margin: 0 auto;
+   }  */

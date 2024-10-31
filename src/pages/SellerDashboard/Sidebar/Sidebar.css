@@ -1,0 +1,23 @@
+/* src/components/Sidebar.css */
+.sidebar {
+    width: 250px; /* 侧边栏宽度 */
+    background-color: #3b3b3b; /* 背景色 */
+    color: white; /* 字体颜色 */
+    padding: 20px; /* 内边距 */
+    height: 100vh; /* 使侧边栏占满整个高度 */
+}
+
+.sidebar ul {
+    list-style-type: none; /* 取消默认的列表样式 */
+    padding: 0; /* 去掉内边距 */
+}
+
+.sidebar li {
+    cursor: pointer; /* 鼠标悬停时显示为手型 */
+    padding: 10px; /* 每个菜单项的内边距 */
+    transition: background-color 0.3s; /* 添加过渡效果 */
+}
+
+.sidebar li:hover {
+    background-color: #575757; /* 悬停时改变背景色 */
+}

@@ -1,0 +1,9 @@
+/* src/components/ProductForm/ProductForm.css */
+.product-form {
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+}
+
+.submit-button {
+    margin-top: 20px; /* 上边距 */
+}

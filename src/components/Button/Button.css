@@ -1,0 +1,14 @@
+/* src/components/Button/Button.css */
+.button {
+    background-color: #28a745; /* 按钮背景颜色 */
+    color: white; /* 字体颜色 */
+    border: none; /* 无边框 */
+    border-radius: 4px; /* 圆角 */
+    padding: 10px 15px; /* 内边距 */
+    cursor: pointer; /* 鼠标悬停变成手型 */
+    transition: background-color 0.3s; /* 过渡效果 */
+}
+
+.button:hover {
+    background-color: #218838; /* 鼠标悬停时按钮颜色 */
+}

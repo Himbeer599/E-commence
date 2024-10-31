@@ -1,0 +1,7 @@
+/* src/components/MainContent.css */
+.main-content {
+    flex: 1; /* 主内容区域占满剩余空间 */
+    padding: 20px; /* 内边距 */
+    background-color: #f4f4f4; /* 主内容区域背景色 */
+    overflow-y: auto; /* 添加垂直滚动条 */
+}
