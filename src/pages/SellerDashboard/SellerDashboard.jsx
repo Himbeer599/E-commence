@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import Sidebar from './Sidebar/Sidebar';
-import MainContent from './MainContent/MainContent';
+// import Sidebar from './Sidebar/Sidebar';
+// import MainContent from './MainContent/MainContent';
 import './SellerDashboard.css'; // 导入样式文件
 
 import { useDispatch, useSelector } from 'react-redux';

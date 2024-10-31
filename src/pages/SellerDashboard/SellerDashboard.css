@@ -2,13 +2,14 @@
 .seller-dashboard {
     display: flex; /* 侧边栏和内容区域水平排列 */
     height: 100vh; /* 高度为视口高度 */
-    width: 100vw; /* 宽度为视口宽度 */
+    width: 100vh; /* 宽度为视口宽度 */
     overflow: hidden; /* 隐藏溢出的内容 */
+    flex-direction: column;
 }
 
-.main-content {
-    flex: 1; /* 主内容区域占满剩余空间 */
-    padding: 20px; /* 内边距 */
-    background-color: #f9f9f9; /* 设置背景颜色以区分 */
-    overflow-y: auto; /* 如果内容超出可滚动 */
-}
+/* .main-content {
+    flex: 1; 
+    padding: 20px; 
+    background-color: #f9f9f9;
+    overflow-y: auto; 
+} */
