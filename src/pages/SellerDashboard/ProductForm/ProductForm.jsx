@@ -10,6 +10,7 @@ const ProductForm = ({ onSubmit }) => {
     const [stock, setStock] = useState('');
     const [category, setCategory] = useState('');
 
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit({ productName, description, price, stock, category });

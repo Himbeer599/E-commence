@@ -4,9 +4,11 @@ import { setMenus } from '../../store/menuSlice';
 import MenuItem from './MenuItem';
 // import { fetchMenus } from '../../api/menuApi';
 import './Sidebar.css'
-const Sidebar = () => {
+// import ProductForm from '../../pages/SellerDashboard/ProductForm/ProductForm';
+
+const Sidebar = ({ menus }) => {
   const dispatch = useDispatch();
-  const menus = useSelector((state) => state.menu.menus);
+  const activeSubMenu = useSelector((state) => state.menu.activeSubMenu);
 
   const fetchMenus = async () => {
     try {
@@ -24,7 +26,6 @@ const Sidebar = () => {
   useEffect(() => {
     fetchMenus();
   }, []);
-
 
   return (
     <div className="sidebar">

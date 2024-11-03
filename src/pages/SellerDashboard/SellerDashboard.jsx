@@ -1,36 +1,30 @@
 
-import React, { useState, useEffect } from 'react';
-// import Sidebar from './Sidebar/Sidebar';
+import React from 'react';
+import Sidebar from '../../components/Sidebar/Sidebar';
 // import MainContent from './MainContent/MainContent';
 import './SellerDashboard.css'; // 导入样式文件
-
+// import { setActiveMenu } from '../../store/menuSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import {fetchNaviList} from '../../store/slices/seller'
+import ProductForm from './ProductForm/ProductForm';
 
 
 const SellerDashboard = () => {
-    const dispatch = useDispatch()
-    useEffect(()=>{
-      dispatch(fetchNaviList())
-    },[dispatch])
-    const navi = useSelector(state1 => state1.naviList );
-    const navilist = navi.naviList
-    console.log(navilist)
-    try {
-        navilist.map((menuItem) => (
-            console.log(menuItem)
-        ))
-        return (
-            <div className="seller-dashboard">
-              {navilist.map((menuItem, index) => {
-                return(<li key={menuItem._id}>{menuItem.section}</li>)
-              })}
-            </div>
+  //触发usedispatch执行,使用userEffect显示
+  // const dispatch = useDispatch();
+  // useEffect(()=>{
+  //   dispatch(fetchNaviList())
+  // },[dispatch])
+
+    //获取store中的数据，渲染数据列表
+  const activeSubMenu = useSelector((state) => state.menu.activeSubMenu);
+  const menusa = useSelector((state) => state.menu.menus);
+  console.log(menusa)
+  return (
+          <div className="main-component">
+          <Sidebar menus={menusa} />
+          {activeSubMenu === 'Add a Product' && <ProductForm />}
+          </div>
         );
-    } catch (error) {
-        console.error('error ', error);
-    }
-     
 };
 
 export default SellerDashboard;

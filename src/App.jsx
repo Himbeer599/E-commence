@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './pages/Login/Login';  
 import Registerpage from './pages/Register/Registerpage';
 import Homepage from './pages/HomePage/Homepage';
-// import SellerDashboard from './pages/SellerDashboard/SellerDashboard';
-import Sidebar from './components/Sidebar/Sidebar';
+import SellerDashboard from './pages/SellerDashboard/SellerDashboard';
+// import Sidebar from './components/Sidebar/Sidebar';
 function App() {
 
   return (
@@ -13,8 +13,8 @@ function App() {
         <Route path="/" exact element={<Login />} />
         <Route path="/registerpage" element={<Registerpage />} />
         <Route path="/homepage" element={<Homepage />} />
-        {/* <Route path="/sellerdashboard" element={<SellerDashboard />} /> */}
-        <Route path="/seller/menus" element={<Sidebar />} />
+        <Route path="/sellerdashboard" element={<SellerDashboard />} />
+        {/* <Route path="/seller/menus" element={<Sidebar />} /> */}
       </Routes>
     </Router>
   );
