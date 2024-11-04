@@ -1,10 +1,19 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Header.css';
 import logo from '../Pictures/NGO.png'
 
 
-export default class Header extends Component {
-  render() {
+const Header = () => {
+    const [searchTerm, setSearchTerm] = useState('');
+    const navigate = useNavigate();
+
+    const handleSearchKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            navigate(`/products?search=${encodeURIComponent(searchTerm)}`);
+        }
+    };
+
     return (
         <div className="header">
             <div className="logo leftfix"> 
@@ -14,12 +23,18 @@ export default class Header extends Component {
                 />
             </div>
             <div className="search rightfix"> 
-                <form action="#">
-                    <input type="text" />
-                    <button></button>
-                </form>
+                <input
+                    type="text"
+                    placeholder="Search products..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onKeyDown={handleSearchKeyDown}
+                />
+            
             </div>
         </div>
     )
   }
-}
+
+
+export default Header;
