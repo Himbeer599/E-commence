@@ -17,11 +17,9 @@ const SellerDashboard = () => {
 
     //获取store中的数据，渲染数据列表
   const activeSubMenu = useSelector((state) => state.menu.activeSubMenu);
-  const menusa = useSelector((state) => state.menu.menus);
-  console.log(menusa)
   return (
           <div className="main-component">
-          <Sidebar menus={menusa} />
+          <Sidebar/>
           {activeSubMenu === 'Add a Product' && <ProductForm />}
           </div>
         );

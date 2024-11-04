@@ -1,15 +1,11 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setMenus } from '../../store/menuSlice';
+import React, { useEffect, useState } from 'react';
 import MenuItem from './MenuItem';
 // import { fetchMenus } from '../../api/menuApi';
 import './Sidebar.css'
 // import ProductForm from '../../pages/SellerDashboard/ProductForm/ProductForm';
 
-const Sidebar = ({ menus }) => {
-  const dispatch = useDispatch();
-  const activeSubMenu = useSelector((state) => state.menu.activeSubMenu);
-
+const Sidebar = () => {
+  const [menus, setMenus] = useState([]);
   const fetchMenus = async () => {
     try {
       const response = await fetch('http://192.168.2.31:5000/api/seller/menus');
@@ -17,7 +13,7 @@ const Sidebar = ({ menus }) => {
         throw new Error('Failed to fetch menus');
       }
       const data = await response.json();
-      dispatch(setMenus(data)); // 将数据存储到 Redux 中
+      setMenus(data); 
     } catch (error) {
       console.error('Failed to fetch menus:', error);
     }
@@ -26,7 +22,7 @@ const Sidebar = ({ menus }) => {
   useEffect(() => {
     fetchMenus();
   }, []);
-
+  // console.log
   return (
     <div className="sidebar">
       <h3>Sidebar</h3>
