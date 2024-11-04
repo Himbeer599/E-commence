@@ -1,18 +1,24 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';  // 从 'react-dom/client' 导入
-import App from './App';
+import Root from "./routers/root"
 import {Provider} from 'react-redux'
 // import store from './store/store'
 import store from './store/index'
-import './components/Sidebar/Sidebar.css'
+import { createBrowserRouter,RouterProvider, } from 'react-router-dom';
+import ErrorPage from './error-page';
 
-// 获取根元素
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element:<Root/>,
+    errorElement:<ErrorPage/>
+  },
+]);
 
-// 使用 root.render 而不是 ReactDOM.render
-root.render(
-    <Provider store={store}>
-      <App />
-    </Provider>
-);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
+)
+

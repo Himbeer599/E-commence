@@ -4,7 +4,7 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 // import MainContent from './MainContent/MainContent';
 import './SellerDashboard.css'; // 导入样式文件
 // import { setActiveMenu } from '../../store/menuSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ProductForm from './ProductForm/ProductForm';
 
 

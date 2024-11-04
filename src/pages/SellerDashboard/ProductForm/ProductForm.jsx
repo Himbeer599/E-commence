@@ -1,7 +1,7 @@
 // src/components/ProductForm/ProductForm.jsx
 import React, { useState } from 'react';
 import {Input, Button} from '../../../components/index';
-import './ProductForm.css';
+import styles from './ProductForm.module.css';
 
 const ProductForm = ({ onSubmit }) => {
     const [productName, setProductName] = useState('');
@@ -9,17 +9,25 @@ const ProductForm = ({ onSubmit }) => {
     const [price, setPrice] = useState('');
     const [stock, setStock] = useState('');
     const [category, setCategory] = useState('');
+    const [image, setImage] = useState(null);
 
-    
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        // if(file){
+        //     setImage(file);
+        // }
+        {file && setImage(file)}
+    };
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit({ productName, description, price, stock, category });
+        onSubmit({ productName, description, price, stock, category,image });
         // Reset form after submission
         setProductName('');
         setDescription('');
         setPrice('');
         setStock('');
         setCategory('');
+        setImage(null);
     };
 
     const inputs = [
@@ -31,7 +39,7 @@ const ProductForm = ({ onSubmit }) => {
     ];
 
     return (
-        <form onSubmit={handleSubmit} className="product-form">
+        <form onSubmit={handleSubmit} className={styles.productForm}>
             {inputs.map((input, index) => (
                 <Input
                     key={index}
@@ -40,9 +48,20 @@ const ProductForm = ({ onSubmit }) => {
                     onChange={(e) => input.setValue(e.target.value)}
                     type={input.type}
                     required
+                    className={styles.productFormInput}
                 />
             ))}
+            <div className='file-input'>
+                <label htmlFor="product-image">Upload Product Image</label>
+                <input
+                type="file"
+                id="product-image"
+                accept="image/*"
+                onChange={handleImageChange}
+                />
+            </div>
             <Button type="submit" className="submit-button">Add Product</Button>
+
         </form>
     );
 };
