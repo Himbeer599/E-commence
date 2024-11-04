@@ -27,6 +27,19 @@
   width: 300px;
 }
 
+.login-container button {
+  width: 100%;
+  background-color: #007bff;
+  color: #fff;
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
 /* 标题样式 */
 .login-container h2 {
   margin-bottom: 20px;

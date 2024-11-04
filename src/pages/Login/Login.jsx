@@ -119,6 +119,8 @@ function Login() {
           <button type="button" className="register-button">Register</button>
           </Link>
         </form>
+        <button onClick={()=>navigate('/homepage')}>Go to Homepage</button>
+        <button onClick={()=>navigate('/registerpage')}>Register</button>
       </div>
     </div>
   );
