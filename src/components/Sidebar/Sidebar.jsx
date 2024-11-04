@@ -4,7 +4,7 @@ import MenuItem from './MenuItem';
 import './Sidebar.css'
 // import ProductForm from '../../pages/SellerDashboard/ProductForm/ProductForm';
 
-const Sidebar = () => {
+const Sidebar = ({config}) => {
   const [menus, setMenus] = useState([]);
   const fetchMenus = async () => {
     try {
@@ -28,7 +28,7 @@ const Sidebar = () => {
       <h3>Sidebar</h3>
       <ul className="menu-list">
         {menus.map((menu) => (
-          <MenuItem key={menu._id} name={menu.section} subMenus={menu.features} />
+          <MenuItem key={menu._id} name={menu.section} subMenus={menu.features} config = {config} />
         ))}
       </ul>
     </div>

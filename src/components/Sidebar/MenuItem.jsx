@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SubMenu from './SubMenu';
 
-const MenuItem = ({ name, subMenus }) => {
+const MenuItem = ({ name, subMenus, config }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => setIsHovered(true);
@@ -15,7 +15,7 @@ const MenuItem = ({ name, subMenus }) => {
       className="menu-item"
     >
       <div className="menu-item-title">{name}</div>
-      {isHovered && <SubMenu subMenus={subMenus} />}
+      {isHovered && <SubMenu subMenus={subMenus} config = {config} />}
     </li>
   );
 };

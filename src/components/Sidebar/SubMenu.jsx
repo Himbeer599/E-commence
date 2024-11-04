@@ -1,14 +1,11 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { setActiveSubMenu } from '../../store/menuSlice'
 
-const SubMenu = ({ subMenus }) => {
-  const dispatch = useDispatch();
+const SubMenu = ({ subMenus, config}) => {
   return (
     <ul className="sub-menu" >
       {subMenus.map((subMenu, index) => (
         <li key={index} 
-        onClick={() => {dispatch(setActiveSubMenu(subMenu))}}
+        onClick={() => {config(subMenu)}}
         className="sub-menu-item">
           {subMenu}
         </li>

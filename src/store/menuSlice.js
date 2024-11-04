@@ -11,9 +11,9 @@ const menuSlice = createSlice({
     setMenus: (state, action) => {
       state.menus = action.payload;
     },
-    setActiveMenu: (state, action) => {
-      state.activeMenu = action.payload;
-    },
+    // setActiveMenu: (state, action) => {
+    //   state.activeMenu = action.payload;
+    // },
     clearActiveMenu: (state) => {
       state.activeMenu = null;
     },
