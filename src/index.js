@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';  // 从 'react-dom/client' 导入
 import Root from "./routers/root"
-import { RouterProvider, } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 // import ErrorPage from './error-page';
 
 // const router = createBrowserRouter([
