@@ -1,13 +1,20 @@
-.results-list{
+.results_list{
     width: 100%;
     background-color: white;
     display: flex;
     flex-direction: column;
     box-shadow:0px 0px 8px #ddd;
     border-radius: 10px;
+    align-items: center;
     /* margin-top: 3rem; */
     /* max-height: 1000px; */
     overflow-y: scroll;
+}
+
+.loading{
+    font-size: black;
+    font-weight:200;
+    margin-bottom: 0.8rem;
 }
 
 /* 可以设置结果项的样式（每个SearchResult组件内的内容） */
@@ -15,4 +22,10 @@
     padding: 0.5rem 1rem;
     font-size: 1.1rem;
     border-bottom: 1px solid #eee; /* 分割线 */
+}
+
+.results{
+    font-size: 1.5rem black;
+    font-weight: bold;
+
 }

@@ -1,62 +1,80 @@
-import React, {useState,useEffect} from 'react'
+import React, {useEffect} from 'react'
 import {FaSearch} from 'react-icons/fa'
 import './Searchbar.css'
 import { useDebouncedCallback } from 'use-debounce';
 
-const Searchbar = ({setResults}) => {
-        const [filter,setFilter] =useState('')
-        // const [searchedProducts, setSearchedProducts] = useState([]);
-        const debouncedFetchData = useDebouncedCallback ((value)=>{
-            const lowerCaseValue= value.toLowerCase();
-            fetchData(lowerCaseValue);
-            // console.log('!!!',lowerCaseValue);
-            // console.log('lowercasedata', value.toLowerCase()); 
-        },300);
-
-        useEffect(() => {
-            if (filter) { // Only call if there's some input
-                debouncedFetchData(filter); // Call the debounced function
-            } else {
-                setResults([]); // Clear results if input is empty
-            }
-        }, [filter, debouncedFetchData]); 
-
-        const fetchData = async (value) => {
-            try {
-                const response = await fetch('http://192.168.2.31:5000/api/products/productslist');
-                const data = await response.json();
-                console.log('Data:', data); 
-                const lowerCaseValue= value.toLowerCase();
-                // const lowerCaseKeyword= value.toLowerCase();
-                console.log('@@@@@',lowerCaseValue);
-                const results = data.filter((product)=>{
-                    return(
-                        value &&
-                        product &&
-                        product.brand &&
-                        product.brand.toLowerCase() === lowerCaseValue ||
-                        product.name &&
-                        product.name.toLowerCase().includes(lowerCaseValue)
-                        // product.name.toLowerCase().includes(lowerCaseValue)
-                    )}
-                );
-                console.log('Filtered Results:', results);
-                setResults(results);
-            } catch (error) {
-                console.error('Error fetching products!:', error);
-            }
-        };
-        
-
-    const handleChange = (value)=>{
-        setFilter(value);
+const Searchbar = ({dispatch,state}) => {
+    const query =state.query;
+    const fetchData = async (searchTerm) => {
+        try {
+            const response = await fetch('http://192.168.2.31:5000/api/products/productslist');
+            const data = await response.json();
+            console.log('backend data:', data);
+            const filtereddata = data.filter((product)=>{
+                const matchesBrand = product?.brand?.toLowerCase() === searchTerm;
+                const matchesName = product?.name?.toLowerCase().includes(searchTerm);
+                return matchesBrand || matchesName;
+            });
+            console.log('Filtered Results:', filtereddata);
+            dispatch({
+                type:'setFilteredResults',
+                payload:filtereddata,
+                    isDisplay: true,})
+                    // isLoading:false,
+                }catch (error) {
+            // console.error('Error fetching products!:', error);
+            dispatch({
+                type:'setErr',
+                payload:error.message,})
+                } finally {
+                    dispatch({type:'setIsLoading',payload:false});
+                }
     };
+
+    const debouncedFetchData = useDebouncedCallback ((searchTerm)=>{
+        // const lowerCaseValue= value.toLowerCase();
+        fetchData(searchTerm);
+        // console.log('!!!',lowerCaseValue);
+        // console.log('lowercasedata', value.toLowerCase()); 
+    },300);
+
+    useEffect(() => {
+        // const queryStr = Array.isArray(query) ? query.join(' ') : query;
+        if (typeof query === 'string' && query) { // Only call if there's some input
+            dispatch({
+                type:'setMultipleStates',
+                payload:{ 
+                query: query || '',
+                isLoading:true,
+                err:null}
+            })
+            debouncedFetchData(query.toLowerCase()); // Call the debounced function
+        } else {
+            dispatch({
+                isLoading:true,
+                err:null,
+            })
+        }
+    }, [query, debouncedFetchData, dispatch]); 
+    const handleInputChange = (value)=>{
+        dispatch({
+            type:'setMultipleStates',
+            payload:{
+                // isLoading:true,
+                query: value || '',
+                isFirst:false,
+            }
+        })
+        debouncedFetchData(value);
+    };
+    
     return (
     <div className='input-wrapper'>
         <FaSearch id='search-icon' />
         <input 
         placeholder='Type to search...'
-        onChange={(e)=>handleChange(e.target.value)}
+        value={query}
+        onChange={(e)=>handleInputChange(e.target.value)}
         />
     </div>
   );

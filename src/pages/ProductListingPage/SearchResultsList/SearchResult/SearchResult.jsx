@@ -1,11 +1,11 @@
 import React from 'react'
 import './SearchResult.css'
-const SearchResult = ({result}) => {
+const SearchResult = ({filteredResult}) => {
   return (
     <div className='search-result'>
-      <div>Name:{result.name}</div>
-      <div>Brand:{result.brand}</div>
-      <div>Price:{result.price}</div>
+      <div>Name:{filteredResult.name}</div>
+      <div>Brand:{filteredResult.brand}</div>
+      <div>Price:{filteredResult.price}</div>
     </div>
   )
 }
