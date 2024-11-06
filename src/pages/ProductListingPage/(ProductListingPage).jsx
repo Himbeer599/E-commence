@@ -7,7 +7,6 @@ const initialState ={
   query:'',
   isFirst:true,
   isLoading:false,
-  // isDisplay:false,
   filteredResults:[],
   err:null,
 }

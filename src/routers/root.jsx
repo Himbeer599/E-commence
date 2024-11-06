@@ -5,7 +5,7 @@ import SellerDashboard from '../pages/SellerDashboard/SellerDashboard';
 import { createBrowserRouter } from 'react-router-dom';
 import ErrorPage from '../error-page';
 import ProductForm from '../pages/SellerDashboard/ProductForm/ProductForm';
-import ProductListingPage from '../pages/ProductListingPage/ProductListingPage'
+import ProductPage from '../pages/ProductListingPage/ProductPage';
 
 const router = createBrowserRouter([
     {
@@ -30,9 +30,10 @@ const router = createBrowserRouter([
             }
         ]
     },
+    
     {
-        path:"/productslist",
-        element: <ProductListingPage />
+        path:"/products",
+        element: <ProductPage />
     },
     {
         path:"*",

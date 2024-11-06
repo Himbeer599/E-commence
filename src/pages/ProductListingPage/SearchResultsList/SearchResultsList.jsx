@@ -1,9 +1,12 @@
 import React from 'react'
 import styles from './SearchResultsList.module.css'
 import SearchResult from './SearchResult/SearchResult'
-const SearchResultsList = (props) => {
-  const {isFirst,isLoading,filteredResults,err} = props;
-  console.log('%%',isFirst,'@@@',isLoading,'!!',filteredResults,'$$',err)
+const SearchResultsList = ({props}) => {
+  console.log(props)
+  const {isFirst,isLoading,err} = props.search;
+  // const { isLoading, isFirst, err } = search;
+  const filteredResults = props.filteredResults;
+  console.log('isFirst in SearchResult',isFirst,'isLoading',isLoading,'filteredResults',filteredResults,'ERROR',err)
   return (
     <div>
       {filteredResults.length > 0 && <h2 className={styles.results}>Search Results</h2>}
