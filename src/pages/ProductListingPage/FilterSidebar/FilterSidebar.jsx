@@ -5,8 +5,8 @@ import CheckboxFilter from './Checkbox/CheckboxFilter'
 
 const FilterSidebar = ({filterdispatch, filterstate}) => {
   const {brand,color,productType,energyEfficiency,country,priceRange} = filterstate;
-  const handleCheckboxChange = (filterName, option)=>{
-    const selectionOptions = filterstate [filterName]
+  const handleCheckboxChange = (productType, option)=>{
+    const selectionOptions = filterstate [productType]
     const updatedOptions = selectionOptions.includes(option)
           ? selectionOptions.filter((item)=> item !== option)
           : [...selectionOptions, option];
@@ -30,7 +30,7 @@ const FilterSidebar = ({filterdispatch, filterstate}) => {
       <CheckboxFilter 
           title = 'Brand'
           options={['Simens','AEG','Miele','Bosch','Philips','WMF','IKEA','i-Phone']}
-          selectionOptions={FilterSidebar.brand}
+          selectionOptions={brand}
           onChange={(selectedOptions)=>handleCheckboxChange('brand',selectedOptions)}
       />
       <CheckboxFilter 
