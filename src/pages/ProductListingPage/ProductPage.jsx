@@ -3,7 +3,8 @@ import React, {useReducer} from 'react'
 import Searchbar from './Searchbar/Searchbar'
 import SearchResultsList from './SearchResultsList/SearchResultsList'
 import FilterSidebar from './FilterSidebar/FilterSidebar'
-import styles from './ProductListingPage.module.css' 
+import styles from './ProductPage.module.css' 
+
 
 const initialState ={
     search:{
@@ -61,18 +62,16 @@ function reducer (state,action){
 const ProductPage = () => {
       const [state, dispatch] = useReducer (reducer, initialState)
       //下面可以看到payload数据结构（数据组成），因为其作为dispatch入参
-      const callback = (dict) => {
-        console.log("2222",dict);
-        dispatch(dict);
-      }
-      
-      console.log('callback',state);
+    //   const callback = (dict) => {
+    //     console.log("2222",dict);
+    //     dispatch(dict);
+    //   console.log('callback',state);
     //   console.log('search in productpage',state);
       // const { query, filteredResults, isFirst, isLoading, error } = state;
       return (
         <div className={styles.productingListingPage}>
                   <div className="search-bar-container">
-                    <Searchbar dispatch={callback} state={state}/>
+                    <Searchbar dispatch={dispatch} state={state}/>
                   </div>
                     <h2 className={styles.sum}>In total:{state.filteredResults.length}</h2>
                     <FilterSidebar/>

@@ -3,11 +3,41 @@ import {FaSearch} from 'react-icons/fa'
 import './Searchbar.css'
 import { useDebouncedCallback } from 'use-debounce';
 
+
 const Searchbar = ({dispatch,state}) => {
     console.log("State in Searchbar:", state);
     //下述解构时一定要按照initial Statae里面的位置顺序进行结构，右边要加上search节点
     const { query, isFirst, isLoading ,err} = state.search;
     // console.log("query after jiegou",query);
+    const handleInputChange = (value)=>{
+        // console.log('InputValue',isFirst)
+        if (isFirst) {
+            // dispatch({
+            //     type:'setSearchQuery',
+            //     payload:{ 
+            //         ...state.search,
+            //         isFirst:false,
+            //     },
+            // });
+            // state.search.isFirst=false;
+            // dispatch({
+            //     type:'setSearchQuery',
+            //     payload:state.search,
+            // });
+            dispatch({
+                type:'setSearchQuery',
+                payload:{ 
+                    query:state.query,
+                    // isFirst:state.isFirst,
+                    isLoading:state.isLoading,
+                    err:state.err,
+                    isFirst:false,
+                },
+            });
+        }
+        debouncedFetchData(value);
+    };
+    
     const fetchData = async (searchTerm) => {
         try {
             const response = await fetch('http://192.168.2.31:5000/api/products/productslist');
@@ -63,46 +93,9 @@ const Searchbar = ({dispatch,state}) => {
                 },
             });
             debouncedFetchData(query.toLowerCase()); // Call the debounced function
-        } else {
-            // dispatch({
-            //     type:'setSearchQuery',
-            //     payload:{ 
-            //     isLoading:true,
-            //     err:null},
-            // })
-        }
+        } 
     }, [query, debouncedFetchData, dispatch]); 
-    const handleInputChange = (value)=>{
-        // console.log('InputValue',isFirst)
-        if (isFirst) {
-            // dispatch({
-            //     type:'setSearchQuery',
-            //     payload:{ 
-            //         ...state.search,
-            //         isFirst:false,
-            //     },
-            // });
-            // state.search.isFirst=false;
-            // dispatch({
-            //     type:'setSearchQuery',
-            //     payload:state.search,
-            // });
-            
-            dispatch({
-                type:'setSearchQuery',
-                payload:{ 
-                    query:state.query,
-                    isFirst:state.isFirst,
-                    isLoading:state.isLoading,
-                    err:state.err,
-                    isFirst:false,
-                },
-            });
-            
-        }
-        debouncedFetchData(value);
-    };
-    
+   
     return (
     <div className='input-wrapper'>
         <FaSearch id='search-icon' />

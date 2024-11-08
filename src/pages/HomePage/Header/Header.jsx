@@ -11,8 +11,7 @@ const Header = () => {
     const handleSearchKeyDown = (e) => {
         if (e.key === 'Enter') {
             // navigate(`/products?search=${encodeURIComponent(searchTerm)}`);
-            navigate(`/productslist`);
-            
+            navigate(`/products`);
         }
     };
 
