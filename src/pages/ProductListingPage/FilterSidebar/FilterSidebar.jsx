@@ -3,14 +3,14 @@ import './FilterSidebar.css'
 import CheckboxFilter from './Checkbox/CheckboxFilter'
 // import RangeFilter from './Range/'
 
-const FilterSidebar = ({dispatch, filters}) => {
-  const {brand,color,productType,energyEfficiency,country,priceRange} = filters;
+const FilterSidebar = ({filterdispatch, filterstate}) => {
+  const {brand,color,productType,energyEfficiency,country,priceRange} = filterstate;
   const handleCheckboxChange = (filterName, option)=>{
-    const selectionOptions = filters [filterName]
+    const selectionOptions = filterstate [filterName]
     const updatedOptions = selectionOptions.includes(option)
           ? selectionOptions.filter((item)=> item !== option)
           : [...selectionOptions, option];
-    dispatch({
+          filterdispatch({
       type:'setFilter',
       filterName:filterName,
       payload:updatedOptions,

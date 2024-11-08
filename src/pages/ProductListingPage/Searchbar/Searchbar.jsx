@@ -1,13 +1,10 @@
-import React, { useState} from 'react'
+import React from 'react'
 import {FaSearch} from 'react-icons/fa'
 import './Searchbar.css'
 import { useDebouncedCallback } from 'use-debounce';
 
-const Searchbar = ({dispatch,search}) => {
-    const { query, isFirst, isLoading ,err} = search;
-    // console.log("query after jiegou",query);
-    // const [inputValue, setInputValue] = useState(query)
-    
+const Searchbar = ({querydispatch,querystate}) => {
+    const { query, isFirst, isLoading,err} = querystate;
 
     const handleInputChange = (searchTerm)=>{
         console.log(searchTerm);
@@ -15,8 +12,8 @@ const Searchbar = ({dispatch,search}) => {
     }
 
     const debouncedQuery = useDebouncedCallback ((searchTerm)=>{
-        dispatch({
-            type:'setSearchQuery',
+        querydispatch({
+            type:'setMultiple',
             payload:{
                     query:searchTerm, 
                     isLoading:true,

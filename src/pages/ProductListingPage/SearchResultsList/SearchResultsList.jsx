@@ -1,8 +1,10 @@
 import React from 'react'
 import styles from './SearchResultsList.module.css'
 import SearchResult from './SearchResult/SearchResult'
-const SearchResultsList = ({props, filteredResults}) => {
-  const {isFirst, isLoading, err} = props.search;
+
+const SearchResultsList = ({querystate, filteredResults}) => {
+  const {query, isFirst, isLoading, err} = querystate;
+  console.log('@@@@@@', querystate)
   console.log('isFirst in SearchResult',isFirst,'isLoading',isLoading,'filteredResults',filteredResults,'ERROR',err)
   return (
     <div>

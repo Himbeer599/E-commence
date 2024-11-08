@@ -5,49 +5,73 @@ import SearchResultsList from './SearchResultsList/SearchResultsList'
 import FilterSidebar from './FilterSidebar/FilterSidebar'
 import styles from './ProductPage.module.css' 
 
-const initialState ={
-    search:{
-        query:'',
-        isFirst:true,
-        isLoading:false,
-        err:null,
-    },
-    filters:{
-        brand:[],
-        color:[],
-        productType:[],
-        energyEfficiency:[],
-        country:[],
-        priceRange:[0,10000],
-    },
+const query_initailState = {
+    query:'',
+    isFirst:true,
+    isLoading:false,
+    err:null,
 }
-
-function reducer (state,action){
+const filter_initialState = {
+    brand:[],
+    color:[],
+    productType:[],
+    energyEfficiency:[],
+    country:[],
+    priceRange:[0,10000],
+}
+function queryReducer (state,action) {
     switch (action.type) {
-        case 'setSearchQuery':
-            return {
+        case 'setQuery':
+            return{
                 ...state,
-                search: action.payload,
+                query:action.payload,
             };
-        case 'setFilter':
-            return {
+        case 'setisFirst':
+            return{
                 ...state,
-                filters:{
-                    ...state.filters,
-                    [action.filterName]:action.payload
-                }
+                isFirst:action.payload,
+            };
+        case 'setisLoading':
+            return{
+                ...state,
+                isLoading:action.payload,
+            };
+        case 'setErr':
+            return{
+                ...state,
+                err:action.payload,
+            };
+        case 'setMultiple':
+            return{
+                ...state,
+                ...action.payload,
             };
         default:
             return state;
     }
 }
 
+function filterReducer (state,action) {
+    switch (action.type) {
+        case 'updatedFilterOption':
+            return {
+                ...state,
+                [action.filterName] : action.payload,
+            };
+        case 'resetFilters':
+            return filter_initialState;
+        default:
+            return state;
+    }
+}
+
 const ProductPage = () => {
-    const [state, dispatch] = useReducer(reducer, initialState)
-    const {search, filters} = state;
-    const {query, isFirst, isLoading, err} = search;
+    const [querystate, querydispatch] = useReducer(queryReducer, query_initailState)
+    const [filterstate, filterdispatch] = useReducer(filterReducer, filter_initialState)
+
+    const {query, isFirst, isLoading, err} = querystate
+    const {brand,color,productType,energyEfficiency,country,priceRange} = filterstate
     const [filteredResults, setFilteredResults] = useState([])
-   
     
     const fetchData = async (searchTerm) => {
         try {
@@ -61,38 +85,35 @@ const ProductPage = () => {
                 return matchesBrand || matchesName;
             }));
             console.log('Filtered Results:', filteredResults);
-        
         }catch (error) {
             console.error('Error fetching products!:', error);
-            dispatch({
-                type:'setSearchQuery',
+            querydispatch({
+                type:'setErr',
                 payload:{ 
-                    ...state.search,
                     err:error.message,
                 },
             });
         } finally {
-            // console.log("1111111111111111111111");
-            dispatch({
-                        type:'setSearchQuery',
-                        payload:{ 
-                            ...state.search,
-                            isLoading:false,
-                        },
+            console.log("1111111111111111111111");
+            querydispatch({
+                        type:'setisLoading',
+                        payload: false,
                     });
         }
     };
+
     useEffect(()=>{
         fetchData(query);
-    },[query,filters]);
+    },[query,brand,color,productType,energyEfficiency,country,priceRange]);
+
     return (
     <div className={styles.productingListingPage}>
-                <div className="search-bar-container">
-                <Searchbar dispatch={dispatch} search={search}/>
-                </div>
-                <h2 className={styles.sum}>In total:{filteredResults.length}</h2>
-                <FilterSidebar dispatch={dispatch} filters={filters}/>
-                <SearchResultsList  props={state}  filteredResults={filteredResults}/>
+        <div className="search-bar-container">
+            <Searchbar querydispatch={querydispatch} querystate={querystate}/>
+        </div>
+            <h2 className={styles.sum}>In total:{filteredResults.length}</h2>
+            <FilterSidebar filterdispatch={filterdispatch} filterstate={filterstate}/>
+            <SearchResultsList  querystate={querystate}  filteredResults={filteredResults}/>
     </div>
     )
 }
