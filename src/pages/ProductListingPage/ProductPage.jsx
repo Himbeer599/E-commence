@@ -1,10 +1,10 @@
-import React, {useReducer} from 'react'
+import React, {useEffect, useReducer, useState} from 'react'
 // import Header,Footer组件
 import Searchbar from './Searchbar/Searchbar'
 import SearchResultsList from './SearchResultsList/SearchResultsList'
 import FilterSidebar from './FilterSidebar/FilterSidebar'
 import styles from './ProductPage.module.css' 
-
+import { useDebouncedCallback } from 'use-debounce';
 
 const initialState ={
     search:{
@@ -16,31 +16,20 @@ const initialState ={
     filters:{
         brand:[],
         color:[],
-        priceRange:[0,3000],
+        productType:[],
+        energyEfficiency:[],
+        country:[],
+        priceRange:[0,10000],
     },
-    filteredResults:[],
 }
 
 function reducer (state,action){
-    // console.log("-----------------------",action.payload.isFirst);
-    //下面的含义是在case'setSearchQuery'情况下，return：首先展开...state，对state里面的键名search的数值进行修改（采用键值对写法）
-    // action.payload是指的searchbar组件中：
-    // dispatch({type:'setSearchQuery',payload:{...state.search, isLoading:false},});
-    //上述payload首先打开state.search,然后对其中的isLoading进行更改，其他值保持不变，整体包裹在action.payload里面
     switch (action.type) {
         case 'setSearchQuery':
             return {
                 ...state,
                 search: action.payload,
             };
-        // case 'setQuery':
-        //     return {...state,query:action.payload};
-        // case 'setIsFirst':
-        //     return {...state,isFirst:action.payload};
-        // case 'setIsLoading':
-        //     return {...state,isLoading:action.payload};
-        // case 'setErr':
-        //     return {...state,err:action.payload};
         case 'setFilter':
             return {
                 ...state,
@@ -49,37 +38,88 @@ function reducer (state,action){
                     [action.filterName]:action.payload
                 }
             };
-        case 'setFilteredResults':
-            return {...state,filteredResults:action.payload};  
-            //一定要在action.payload上加filterreddata
-        // case 'setMultipleStates':
-        //     return {...state,...action.payload};
         default:
             return state;
     }
 }
 
 const ProductPage = () => {
-      const [state, dispatch] = useReducer (reducer, initialState)
-      //下面可以看到payload数据结构（数据组成），因为其作为dispatch入参
-    //   const callback = (dict) => {
-    //     console.log("2222",dict);
-    //     dispatch(dict);
-    //   console.log('callback',state);
-    //   console.log('search in productpage',state);
-      // const { query, filteredResults, isFirst, isLoading, error } = state;
-      return (
-        <div className={styles.productingListingPage}>
-                  <div className="search-bar-container">
-                    <Searchbar dispatch={dispatch} state={state}/>
-                  </div>
-                    <h2 className={styles.sum}>In total:{state.filteredResults.length}</h2>
-                    <FilterSidebar/>
-                    <SearchResultsList  props={state} />
-        </div>
-      )
+    const [state, dispatch] = useReducer(reducer, initialState)
+    const {search, filters} = state;
+    const {query, isFirst, isLoading, err} = search;
+    const [filteredResults, setFilteredResults] = useState([])
+    const debouncedQuery = useDebouncedCallback ((searchTerm)=>{
+        dispatch({
+            type:'setSearchQuery',
+            payload:{
+                    query:searchTerm, 
+                    isLoading:true,
+                    err:err,
+                    isFirst:false,
+                }
+        })
+    },300);
+    
+    const fetchData = async (searchTerm) => {
+        try {
+            const response = await fetch('http://192.168.2.31:5000/api/products/productslist');
+            const data = await response.json();
+            console.log('backend data:', data);
+            console.log('searchTerm', searchTerm);
+            setFilteredResults(data.filter((product)=>{
+                const matchesBrand = product?.brand?.toLowerCase() === searchTerm.toLowerCase();
+                const matchesName = product?.productType?.toLowerCase().includes(searchTerm.toLowerCase());
+                return matchesBrand || matchesName;
+            }));
+            console.log('Filtered Results:', filteredResults);
+        
+        }catch (error) {
+            console.error('Error fetching products!:', error);
+            dispatch({
+                type:'setSearchQuery',
+                payload:{ 
+                    ...state.search,
+                    err:error.message,
+                },
+            });
+        } finally {
+            // console.log("1111111111111111111111");
+            dispatch({
+                        type:'setSearchQuery',
+                        payload:{ 
+                            ...state.search,
+                            isLoading:false,
+                        },
+                    });
+        }
+    };
+    // const [fetchedData, setFetchedData] = useState(data);
+    useEffect(()=>{
+        // const filtereddata = state.filteredResults  
+        // if (debouncedQuery !== query) { 
+        //     dispatch({
+        //         type:'setSearchQuery',
+        //         payload:{ 
+        //             ...state.search,
+        //             query: debouncedQuery,
+        //             isLoading:true,
+        //         },
+        //     });
+        // } 
+        // setFetchedData(fetchData());
+        fetchData(query);
+    },[query,filters]);
+    return (
+    <div className={styles.productingListingPage}>
+                <div className="search-bar-container">
+                <Searchbar dispatch={dispatch} search={search} debouncedQuery={debouncedQuery}/>
+                </div>
+                <h2 className={styles.sum}>In total:{filteredResults.length}</h2>
+                <FilterSidebar dispatch={dispatch} filters={filters}/>
+                <SearchResultsList  props={state}  filteredResults={filteredResults}/>
+    </div>
+    )
 }
-
 
 
 export default ProductPage
