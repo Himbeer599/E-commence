@@ -3,57 +3,22 @@ import './FilterSidebar.css'
 import CheckboxFilter from './Checkbox/CheckboxFilter'
 // import RangeFilter from './Range/'
 
-const FilterSidebar = ({filterdispatch, filterstate}) => {
-  const {brand,color,productType,energyEfficiency,country,priceRange} = filterstate;
-  const handleCheckboxChange = (productType, option)=>{
-    const selectionOptions = filterstate [productType]
-    const updatedOptions = selectionOptions.includes(option)
-          ? selectionOptions.filter((item)=> item !== option)
-          : [...selectionOptions, option];
-          filterdispatch({
-      type:'setFilter',
-      filterName:filterName,
-      payload:updatedOptions,
-    })
-  };
-  
+const FilterSidebar = ({filterdispatch, filterstate}) => 
+{
+  const filters = filterstate;
+  console.log("filters:", filters);
   return (
     <div className='filter-sidebar-container'>
       <h2>Category</h2>
+      {
+      filters.map((filter) => (
       <CheckboxFilter 
-          title = 'Product Type'
-          options={['Entertainment Electronics','Kitchen Electronics','Cleaning and Home Care Electronics']}
-          selectionOptions={productType}
-          onChange={(option)=>handleCheckboxChange('product type',option)}
+          title = {filter.filtername}
+          options={filter.options}
+          onChange={(option)=>filterdispatch()}
       />
-{/*       
-      <CheckboxFilter 
-          title = 'Brand'
-          options={['Simens','AEG','Miele','Bosch','Philips','WMF','IKEA','i-Phone']}
-          selectionOptions={brand}
-          onChange={(selectedOptions)=>handleCheckboxChange('brand',selectedOptions)}
-      />
-      <CheckboxFilter 
-          title = 'Energy Efficiency'
-          options={['A+++','A++','A+','A','B','C','D']}
-          selectionOptions={FilterSidebar.energyefficiency}
-          onChange={(selectedOptions)=>handleCheckboxChange('energy efficiency',selectedOptions)}
-      />
-      <CheckboxFilter 
-          title = 'Color'
-          options={['white','black','red','grey','blue','pink','purple','yellow']}
-          selectionOptions={FilterSidebar.color}
-          onChange={(selectedOptions)=>handleCheckboxChange('color',selectedOptions)}
-      />
-      <CheckboxFilter 
-          title = 'Country of Manufacture'
-          options={['China','Germany','USA','Canada','India','Japan','Korean']}
-          selectionOptions={FilterSidebar.country}
-          onChange={(selectedOptions)=>handleCheckboxChange('country',selectedOptions)}
-      /> */}
-
-      {/* <CheckboxFilter dispatch={dispatch} filters={filters}/> */}
-      {/* <RangeFilter dispatch={dispatch} filters={filters}/> */}
+      ))
+      }
     </div>
   )
 }
