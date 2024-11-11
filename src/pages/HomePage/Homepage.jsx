@@ -10,7 +10,7 @@ import './Homepage.css'
 
 const Homepage = () => {
   return (
-      <div>
+      <div className='homepage-container'>
       <Topbar/>
       <Header/>
       <Mainmenu/>

@@ -18,35 +18,6 @@ function queryReducer (state,action) {
         ...state,
         ...action.payload,
     };
-    // switch (action.type) {
-    //     case 'setQuery':
-    //         return{
-    //             ...state,
-    //             query:action.payload,
-    //         };
-    //     case 'setisFirst':
-    //         return{
-    //             ...state,
-    //             isFirst:action.payload,
-    //         };
-    //     case 'setisLoading':
-    //         return{
-    //             ...state,
-    //             isLoading:action.payload,
-    //         };
-    //     case 'setErr':
-    //         return{
-    //             ...state,
-    //             err:action.payload,
-    //         };
-    //     case 'setMultiple':
-    //         return{
-    //             ...state,
-    //             ...action.payload,
-    //         };
-    //     default:
-    //         return state;
-    // }
 }
 
 const filter_initialarray = []
@@ -62,7 +33,6 @@ function filterReducer (draft, action) {
         draft.length=0;
         break;
       }
-
       case 'changed': {
         const index = draft.findIndex(t =>
           t.id === action.task.id
@@ -77,7 +47,7 @@ function filterReducer (draft, action) {
         throw Error('Unknown action: ' + action.type);
       }
     }
-  }
+}
 // https://zh-hans.react.dev/reference/react/useReducer#writing-the-reducer-function
 const ProductPage = () => {
     const [querystate, querydispatch] = useReducer(queryReducer, query_initailState)
@@ -87,6 +57,7 @@ const ProductPage = () => {
     // const {brand,color,productType,energyEfficiency,country,priceRange} = filterstate
     const [filteredResults, setFilteredResults] = useState([])
     
+    //将added的reducer封装成一个函数，随时可以用函数调用
     function handleAddFilter(filter) {
         filterdispatch({
             type: 'added',
@@ -134,13 +105,11 @@ const ProductPage = () => {
                 const matchesName = product?.productType?.toLowerCase().includes(searchTerm.toLowerCase());
                 return matchesBrand || matchesName;
             })); 
+            console.log('Filtered Results:', filteredResults);
             handleRemoveAllFilter();
             filters.map((filter) => (
                 handleAddFilter(filter)
             ))
-
-
-            console.log('Filtered Results:', filteredResults);
         }catch (error) {
             console.error('Error fetching products!:', error);
             querydispatch({
@@ -165,14 +134,20 @@ const ProductPage = () => {
     },[querystate.query]);
 
     return (
-        
     <div className={styles.productingListingPage}>
         <div className="search-bar-container">
             <Searchbar querydispatch={querydispatch} querystate={querystate}/>
         </div>
             <h2 className={styles.sum}>In total:{filteredResults.length}</h2>
-            <FilterSidebar filterdispatch={filterdispatch} filterstate={filterarray}/>
-            <SearchResultsList  querystate={querystate}  filteredResults={filteredResults}/>
+            {filteredResults.length > 0 && <h2 className={styles.results}>Search Results</h2>}
+        <div className={styles.resultsandfilter}>
+            <div className="filter-sidebar-container">
+                <FilterSidebar filterdispatch={filterdispatch} filterstate={filterarray}/>
+            </div>
+            <div className="search-results-list-container">
+                <SearchResultsList  querystate={querystate}  filteredResults={filteredResults}/>
+            </div>
+        </div>
     </div>
     )
 }

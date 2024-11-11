@@ -17,7 +17,9 @@ const FilterSidebar = ({filterdispatch, filterstate}) =>
           options={filter.options}
           onChange={(option)=>filterdispatch()}
       />
+      
       ))
+
       }
     </div>
   )

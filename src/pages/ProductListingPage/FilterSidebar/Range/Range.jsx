@@ -3,7 +3,6 @@ import './Range.css'
 const RangeFilter = () => {
   return (
     <div>
-      
       <RangeFilter
           title='Price'
           min={0}

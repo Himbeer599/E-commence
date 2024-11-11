@@ -13,19 +13,23 @@ const CheckboxFilter = ({ title, options, onChange}) => {
     // onChange(updatedSelection);
   }
 
+  
   return (
-    <div>
+    <div className='checkbox-container'>
       <h3>{title}</h3>
-      {options.map((option,index) => (
-        <label key={index}>
-          <input
-            type="checkbox"
-            // checked={selectionOptions.includes(option)}
-            onChange={handleChange}
-          />
-          {option.name}
-        </label>
-      ))}
+      <div className="options-grid">
+        {options.map((option,index) => (
+          <label key={index} className="filter-option">
+            <input
+              type="checkbox"
+              // checked={selectionOptions.includes(option)}
+              onChange={handleChange}
+            />
+            <p className="optionname"> {option.name}</p>
+            
+          </label>
+        ))}
+      </div>
     </div>
 
 

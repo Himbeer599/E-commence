@@ -7,8 +7,8 @@ const SearchResultsList = ({querystate, filteredResults}) => {
   console.log('@@@@@@', querystate)
   console.log('isFirst in SearchResult',isFirst,'isLoading',isLoading,'filteredResults',filteredResults,'ERROR',err)
   return (
-    <div>
-      {filteredResults.length > 0 && <h2 className={styles.results}>Search Results</h2>}
+    <div className={styles.results_container}>
+      {/* {filteredResults.length > 0 && <h2 className={styles.results}>Search Results</h2>} */}
       {
         isFirst ? <h2>Welcome, please enter the key word</h2>:
         isLoading ? (
