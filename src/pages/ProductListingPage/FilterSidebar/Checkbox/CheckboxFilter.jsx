@@ -3,17 +3,6 @@ import './CheckboxFilter.css'
 
 const CheckboxFilter = ({ title, options, onChange}) => {
   // const options = options;
-  const handleChange = (event)=> {
-    // const selectionOption = event.target.value;
-    // const isChecked = event.target.checked;
-    // const updatedSelection = isChecked
-    //   ?[...selectionOptions,selectionOption]
-    //   :selectionOptions.filter((option)=>option !== selectionOption)
-
-    // onChange(updatedSelection);
-  }
-
-  
   return (
     <div className='checkbox-container'>
       <h3>{title}</h3>
@@ -23,7 +12,10 @@ const CheckboxFilter = ({ title, options, onChange}) => {
             <input
               type="checkbox"
               // checked={selectionOptions.includes(option)}
-              onChange={handleChange}
+              onChange={(e) => {
+                // console.log(e.target.checked)
+                onChange('checkbox',option.name, e.target.checked);
+              }}
             />
             <p className="optionname"> {option.name}</p>
             

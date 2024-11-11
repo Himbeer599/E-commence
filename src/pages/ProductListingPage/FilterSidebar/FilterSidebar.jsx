@@ -1,23 +1,33 @@
 import React from 'react'
 import './FilterSidebar.css'
 import CheckboxFilter from './Checkbox/CheckboxFilter'
-// import RangeFilter from './Range/'
+import RangeFilter from './Range/Range'
 
-const FilterSidebar = ({filterdispatch, filterstate}) => 
+const FilterSidebar = ({onChange, filterstate}) => 
 {
   const filters = filterstate;
   console.log("filters:", filters);
+
   return (
     <div className='filter-sidebar-container'>
       <h2>Category</h2>
+
       {
-      filters.map((filter) => (
-      <CheckboxFilter 
-          title = {filter.filtername}
-          options={filter.options}
-          onChange={(option)=>filterdispatch()}
-      />
-      
+      filters.map((filter,index) => (
+        filter.type === 'range'?
+        (
+          <RangeFilter
+          onChange={onChange}
+          filter={filter}
+          />
+          // <div Hello/>
+        ):(
+          <CheckboxFilter 
+                title = {filter.filtername}
+                options={filter.options}
+                onChange={onChange}
+          />
+        )
       ))
 
       }

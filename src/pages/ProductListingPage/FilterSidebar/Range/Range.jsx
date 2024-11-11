@@ -1,14 +1,14 @@
 import React from 'react'
 import './Range.css'
-const RangeFilter = () => {
+const RangeFilter = ({onChange, filter }) => {
   return (
-    <div>
-      <RangeFilter
-          title='Price'
-          min={0}
-          max={10000}
-          selectedRange={FilterSidebar.priceRange}
-          onChange={(selectedRange)=>onFilterChange('priceRange', selectedRange)}
+    <div className='pricerangefilter-container'>
+      <h3>{filter.filtername}</h3>
+      <input type="range" id="cowbell" name="cowbell" min="0" max="100" step="10" 
+       onChange={(e) => {
+        console.log(e.target.value)
+        onChange('range',filter.filtername, e.target.value);
+      }}
       />
     </div>
   )

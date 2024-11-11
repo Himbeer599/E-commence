@@ -23,29 +23,45 @@ function queryReducer (state,action) {
 const filter_initialarray = []
 function filterReducer (draft, action) {
     switch (action.type) {
-      case 'added': {
+    case 'added': {
         draft.push({
-          ...action.payload
+            ...action.payload
         });
         break;
-      }
-      case "removeall": {
+    }
+    case "removeall": {
         draft.length=0;
         break;
-      }
-      case 'changed': {
-        const index = draft.findIndex(t =>
-          t.id === action.task.id
-        );
-        draft[index] = action.task;
+    }
+    case 'change':{
+        switch(action.payload.type) { 
+            case 'range': {
+                draft.forEach(filter => {
+                    if (filter.filtername === action.payload.filtername) {
+                        filter.currentValue = action.payload.setvalue;
+                        console.log("set", filter.filtername, "as", action.payload.setvalue);
+                        return ;
+                    }
+                });
+            break;
+            }
+            case "checkbox": {
+                console.log("set checkbox", action.payload.filtername, "to", action.payload.setvalue);
+                break;
+            }
+            default: {
+                break;
+            }
+        }
         break;
-      }
-      case 'deleted': {
-        return draft.filter(t => t.id !== action.id);
-      }
-      default: {
-        throw Error('Unknown action: ' + action.type);
-      }
+    }
+
+    case 'deleted': {
+    return draft.filter(t => t.id !== action.id);
+    }
+    default: {
+    throw Error('Unknown action: ' + action.type);
+    }
     }
 }
 // https://zh-hans.react.dev/reference/react/useReducer#writing-the-reducer-function
@@ -71,9 +87,22 @@ const ProductPage = () => {
             type: 'removeall'
         });
     }
+    function handleChange (type, name, value){
+        filterdispatch({
+            type: 'change',
+            payload:{
+                type: type,
+                filtername: name,
+                setvalue: value,
+            }
+        });
+    }
+   
+
     const filters = [
         {
             filtername:"color",
+            type: "checkbox",
             options: [
                 {'name':'red', checked: false},
                 {'name':'blue', checked: false},
@@ -81,17 +110,19 @@ const ProductPage = () => {
         },
         {
             filtername:"brand",
+            type: "checkbox",
             options: [
                 {'name':'Siemens', checked: false},
                 {'name':'Bosch', checked: false},
             ] 
         },
         {
-            filtername:"brand1",
-            options: [
-                {'name':'Siemens2', checked: false},
-                {'name':'Bosch3', checked: false},
-            ] 
+            filtername:"price",
+            type: "range",
+            min: 0,
+            max: 1000,
+            default:0,
+            currentValue:0,
         },
     ]
     const fetchData = async (searchTerm) => {
@@ -110,6 +141,7 @@ const ProductPage = () => {
             filters.map((filter) => (
                 handleAddFilter(filter)
             ))
+            // handleChange("range", "price", 3);
         }catch (error) {
             console.error('Error fetching products!:', error);
             querydispatch({
@@ -142,7 +174,7 @@ const ProductPage = () => {
             {filteredResults.length > 0 && <h2 className={styles.results}>Search Results</h2>}
         <div className={styles.resultsandfilter}>
             <div className="filter-sidebar-container">
-                <FilterSidebar filterdispatch={filterdispatch} filterstate={filterarray}/>
+                <FilterSidebar onChange={handleChange} filterstate={filterarray}/>
             </div>
             <div className="search-results-list-container">
                 <SearchResultsList  querystate={querystate}  filteredResults={filteredResults}/>
