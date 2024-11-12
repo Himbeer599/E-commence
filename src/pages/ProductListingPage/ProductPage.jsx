@@ -125,45 +125,55 @@ const ProductPage = () => {
             currentValue:0,
         },
     ]
-    const fetchData = async (searchTerm) => {
-        try {
-            const response = await fetch('http://192.168.2.31:5000/api/products/productslist');
-            const data = await response.json();
-            console.log('backend data:', data);
-            console.log('searchTerm', searchTerm);
-            setFilteredResults(data.filter((product)=>{
-                const matchesBrand = product?.brand?.toLowerCase() === searchTerm.toLowerCase();
-                const matchesName = product?.productType?.toLowerCase().includes(searchTerm.toLowerCase());
-                return matchesBrand || matchesName;
-            })); 
-            console.log('Filtered Results:', filteredResults);
-            handleRemoveAllFilter();
-            filters.map((filter) => (
-                handleAddFilter(filter)
-            ))
-            // handleChange("range", "price", 3);
-        }catch (error) {
-            console.error('Error fetching products!:', error);
-            querydispatch({
-                type:'setErr',
-                payload:{ 
-                    err:error.message,
-                },
-            });
-        } finally {
-            console.log("1111111111111111111111");
-            querydispatch({
-                        type:'setisLoading',
-                        payload: { 
-                            isLoading:false,
-                        },
-                    });
-        }
-    };
 
-    useEffect(()=>{
+    useEffect(() => {
+        const searchTerm = querystate.query
+        const fetchData = async (searchTerm) => {
+            try {
+                console.log('searchTerm', searchTerm);
+                // const response = await fetch('http://192.168.2.31:5000/api/products');
+                const response = await fetch(`http://localhost:5000/api/products?search=${encodeURIComponent(searchTerm)}`);
+                const data = await response.json();
+                console.log('backend data:', data);
+                setFilteredResults(data);
+            } catch (error) {
+                console.error('Error fetching products!:', error);
+                querydispatch({
+                    type:'setErr',
+                    payload:{ 
+                        err:error.message,
+                    },
+                });
+            } finally {
+                console.log("1111111111111111111111");
+                querydispatch({
+                            type:'setisLoading',
+                            payload: { 
+                                isLoading:false,
+                            },
+                        });
+            }
+        };
         fetchData(querystate.query);
-    },[querystate.query]);
+    }, [querystate.query]);
+
+    // const fetchData = async (searchTerm) => {
+    //     try {
+    //         const response = await fetch('http://192.168.2.31:5000/api/products');
+    //         const data = await response.json();
+    //         console.log('backend data:', data);
+    //         console.log('searchTerm', searchTerm);
+    //         setFilteredResults(data.filter((product)=>{
+    //             const matchesBrand = product?.brand?.toLowerCase() === searchTerm.toLowerCase();
+    //             const matchesName = product?.productType?.toLowerCase().includes(searchTerm.toLowerCase());
+    //             return matchesBrand || matchesName;
+    //         })); 
+    //         console.log('Filtered Results:', filteredResults);
+    //         handleRemoveAllFilter();
+    //         filters.map((filter) => (
+    //             handleAddFilter(filter)
+    //         ))
+    //     }
 
     return (
     <div className={styles.productingListingPage}>
