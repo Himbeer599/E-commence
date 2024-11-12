@@ -155,6 +155,10 @@ const ProductPage = () => {
             }
         };
         fetchData(querystate.query);
+        handleRemoveAllFilter();
+        filters.map((filter) => (
+            handleAddFilter(filter)
+        ))
     }, [querystate.query]);
 
     // const fetchData = async (searchTerm) => {

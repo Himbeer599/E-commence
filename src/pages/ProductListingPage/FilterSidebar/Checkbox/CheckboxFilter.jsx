@@ -18,7 +18,6 @@ const CheckboxFilter = ({ title, options, onChange}) => {
               }}
             />
             <p className="optionname"> {option.name}</p>
-            
           </label>
         ))}
       </div>

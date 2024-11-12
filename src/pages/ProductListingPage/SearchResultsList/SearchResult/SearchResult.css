@@ -3,7 +3,13 @@
     display: flex;
     flex-direction: column;
     /* overflow-y: scroll; */
-    gap: 0.3rem;
+    gap: 1rem;
+    background-color:lightskyblue;
+}
+.search-result .title span{
+    font-size: large;
+    font-weight: bolder;
+    color:black;
 }
 
 .search-result:hover {

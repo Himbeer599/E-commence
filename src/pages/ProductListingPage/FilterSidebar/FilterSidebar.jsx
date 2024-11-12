@@ -11,7 +11,6 @@ const FilterSidebar = ({onChange, filterstate}) =>
   return (
     <div className='filter-sidebar-container'>
       <h2>Category</h2>
-
       {
       filters.map((filter,index) => (
         filter.type === 'range'?
@@ -20,7 +19,6 @@ const FilterSidebar = ({onChange, filterstate}) =>
           onChange={onChange}
           filter={filter}
           />
-          // <div Hello/>
         ):(
           <CheckboxFilter 
                 title = {filter.filtername}
@@ -29,7 +27,6 @@ const FilterSidebar = ({onChange, filterstate}) =>
           />
         )
       ))
-
       }
     </div>
   )

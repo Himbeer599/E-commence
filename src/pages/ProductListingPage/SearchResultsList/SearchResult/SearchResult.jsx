@@ -3,9 +3,18 @@ import './SearchResult.css'
 const SearchResult = ({filteredResult}) => {
   return (
     <div className='search-result'>
-      <div>Name:{filteredResult.name}</div>
-      <div>Brand:{filteredResult.brand}</div>
-      <div>Price:{filteredResult.price}</div>
+      <div className='title'>
+        <span>Name</span>
+        :{filteredResult.name}
+      </div>
+      <div className='title'>
+        <span>Brand</span>
+        :{filteredResult.brand}
+      </div>
+      <div className='title'>
+        <span>Price</span>
+        :{filteredResult.price}
+      </div>
     </div>
   )
 }
