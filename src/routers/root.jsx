@@ -6,6 +6,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import ErrorPage from '../error-page';
 import ProductForm from '../pages/SellerDashboard/ProductForm/ProductForm';
 import ProductPage from '../pages/ProductListingPage/ProductPage';
+import FilterSidebar from '../pages/ProductListingPage/FilterSidebar/FilterSidebar';
 
 const router = createBrowserRouter([
     {
@@ -33,7 +34,13 @@ const router = createBrowserRouter([
     
     {
         path:"/products",
-        element: <ProductPage />
+        element: <ProductPage />,
+        children:[
+            {
+                path:'filter',
+                element:<FilterSidebar/>
+            }
+        ]
     },
     {
         path:"*",

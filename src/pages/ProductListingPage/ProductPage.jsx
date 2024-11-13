@@ -68,10 +68,9 @@ function filterReducer (draft, action) {
 const ProductPage = () => {
     const [querystate, querydispatch] = useReducer(queryReducer, query_initailState)
     const [filterarray, filterdispatch] = useImmerReducer(filterReducer, filter_initialarray)
-
-    // const {query, isFirst, isLoading, err} = querystate
-    // const {brand,color,productType,energyEfficiency,country,priceRange} = filterstate
     const [filteredResults, setFilteredResults] = useState([])
+    const [filters,setFilters] =  useState([])
+    const searchTerm = querystate.query
     
     //将added的reducer封装成一个函数，随时可以用函数调用
     function handleAddFilter(filter) {
@@ -97,45 +96,49 @@ const ProductPage = () => {
             }
         });
     }
-   
-
-    const filters = [
-        {
-            filtername:"color",
-            type: "checkbox",
-            options: [
-                {'name':'red', checked: false},
-                {'name':'blue', checked: false},
-            ]
-        },
-        {
-            filtername:"brand",
-            type: "checkbox",
-            options: [
-                {'name':'Siemens', checked: false},
-                {'name':'Bosch', checked: false},
-            ] 
-        },
-        {
-            filtername:"price",
-            type: "range",
-            min: 0,
-            max: 1000,
-            default:0,
-            currentValue:0,
-        },
-    ]
 
     useEffect(() => {
-        const searchTerm = querystate.query
         const fetchData = async (searchTerm) => {
             try {
                 console.log('searchTerm', searchTerm);
                 // const response = await fetch('http://192.168.2.31:5000/api/products');
-                const response = await fetch(`http://localhost:5000/api/products?search=${encodeURIComponent(searchTerm)}`);
-                const data = await response.json();
-                console.log('backend data:', data);
-                setFilteredResults(data);
+                const response = await fetch(`http://192.168.2.31:5000/api/products?search=${encodeURIComponent(searchTerm)}`);
+                const productsData = await response.json();
+                console.log('backend data based on searchquery:', productsData);
+                
+                const filterResponse = await fetch(`http://192.168.2.31:5000/api/products/filter?search=${encodeURIComponent(searchTerm)}`);
+                if (!filterResponse.ok) {
+                    // throw new Error('Failed to fetch filter');
+                    return;
+                }
+                const filterData = await filterResponse.json();
+                console.log('filterresponse from back:', filterData); 
+                const newfilters = filterData.map((filter) => {
+                    switch (filter.type) {
+                        case "range":
+                            return {
+                                ...filter
+                            };
+                
+                        case "checkbox":
+                            return {
+                                filtername: filter.filtername,
+                                type: filter.type,
+                                options: filter.options.map(option => ({
+                                    name: option,
+                                    checked: false
+                                }))
+                            };
+                        default:
+                            console.warn(`Unknown filter type: ${filter.type}`);
+                            return null;
+                    }
+                });
+                console.log("newfilters", newfilters);
+                handleRemoveAllFilter();
+                newfilters.map((filter) => (
+                    handleAddFilter(filter)
+                ))
             } catch (error) {
                 console.error('Error fetching products!:', error);
                 querydispatch({
@@ -145,7 +148,7 @@ const ProductPage = () => {
                     },
                 });
             } finally {
-                console.log("1111111111111111111111");
+                // console.log("1111111111111111111111");
                 querydispatch({
                             type:'setisLoading',
                             payload: { 
@@ -155,29 +158,7 @@ const ProductPage = () => {
             }
         };
         fetchData(querystate.query);
-        handleRemoveAllFilter();
-        filters.map((filter) => (
-            handleAddFilter(filter)
-        ))
     }, [querystate.query]);
-
-    // const fetchData = async (searchTerm) => {
-    //     try {
-    //         const response = await fetch('http://192.168.2.31:5000/api/products');
-    //         const data = await response.json();
-    //         console.log('backend data:', data);
-    //         console.log('searchTerm', searchTerm);
-    //         setFilteredResults(data.filter((product)=>{
-    //             const matchesBrand = product?.brand?.toLowerCase() === searchTerm.toLowerCase();
-    //             const matchesName = product?.productType?.toLowerCase().includes(searchTerm.toLowerCase());
-    //             return matchesBrand || matchesName;
-    //         })); 
-    //         console.log('Filtered Results:', filteredResults);
-    //         handleRemoveAllFilter();
-    //         filters.map((filter) => (
-    //             handleAddFilter(filter)
-    //         ))
-    //     }
 
     return (
     <div className={styles.productingListingPage}>
