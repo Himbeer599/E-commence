@@ -1,102 +1,46 @@
-
-.homepage-container {
+.homepage-layout {
   margin: 0;
   padding: 0;
   font-family: 'Helvetica', sans-serif;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* height: 100vh;   */
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-  
-  /* h1 {
-    color: #333;  */
-  /* } */
-  
-  /* p {
-    color: #666; /* Medium gray for the paragraph */
-  
-  /* 基础设置 */
-/* body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{
-  margin: 0;
-  padding: 0;
-} */
-/* 
-ul,ol {
-  list-style: none;
-} */
-
-/* img {
-
-  display: block;
-border:0;
-} */
-
-/* b,strong {
-  font-weight: 400;
+  flex-direction: column;
 }
 
-h1,h2,h3,h4,h5,h6 {
-
-  font-size: 100%;
-  font-weight: normal;
-} */
-
-/* i,em {
-
-  font-style: normal;
-} */
-
-/* u,ins,s,del {
-
-  text-decoration: none;
-} */
-
-/* table {
-  border: 1px solid #999;
-
-  border-spacing: 0;
-  border-collapse: collapse;
-} */
-
-/* td,th {
-  border: 1px solid #999;
-} */
-
-/* input,button {
-  outline: none;
-  border:none;
-} */
-
-/* 风格设置 */
-/* body {
-  font:  Tahoma, Helvetica, "\5b8b\4f53", sans-serif;
-  color: #333;
-} */
-
-/* a {
-  text-decoration: none;
-  color: #666;
+.homepage-topbar {
+  background: #f0f0f0;
+  padding: 8px;
 }
 
-a:hover {
-  color:#DD302D;
-  text-decoration: none;
+.homepage-header {
+  background: lightcyan;
+  color: white;
+  padding: 16px;
 }
 
-.leftfix {
-  float: left;
+.homepage-menu {
+  background: #ffffff;
+  padding: 8px;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-.rightfix {
-  float: right;
+.homepage-main-content {
+  padding: 24px;
+  background: #fafafa;
+  flex: 1;
 }
 
-.clearfix::after {
-  content: "";
-  display: block;
-  clear: both;
-} */
+.homepage-best-seller {
+  padding: 16px;
+  background: lightcyan;
+}
+
+.homepage-footer {
+  text-align: center;
+  background: #001529;
+  color: white;
+  padding: 16px;
+}

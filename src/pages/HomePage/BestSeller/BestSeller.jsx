@@ -56,13 +56,6 @@ const Bestseller = () => {
 
     const handleMouseUp = () => setIsScrolling(false);
 
-
-    products.map((product) => (
-        console.log(product.name)
-    ))    
-    // products.map((product) => (
-    //     console.log(product.imageUrl)
-    // ))
     return (
         <div className="bestseller">
             <h2>Best Sellers</h2>

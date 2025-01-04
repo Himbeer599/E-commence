@@ -1,7 +1,8 @@
 .slide-nav {
-    width: 250px;
+    width: auto;
     height: 458px;
-    background-color: #F4F4F4;
+    /* background-color: #F4F4F4; */
+    background-color: lightcyan;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -12,27 +13,29 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 14px;
+            font-size: 18px;
+            font-weight: bolder;
             height: 60px;
-            width: 250px;
+            width: auto;
             /* width: auto; */
             /* line-height: 28px; */
             /* padding-left: 16px; */
         }
             .slide-nav li:hover {
-                background-color: #DD302D;
+                background-color: cyan;
             }
             .slide-nav li:hover>a {
-                color: white;
+                color: black;
+                font-weight: bolder;
             }
 
                     .slide-nav .second-menu {
-                        width: 11300px;
+                        width: 10000px;
                         height: 458px;
                         background-color: white;
                         position: absolute;
                         top: 0;
-                        left: 250px;
+                        left: 380px;
                         padding-left: 20px;
                         display: none;
                         z-index: 10;

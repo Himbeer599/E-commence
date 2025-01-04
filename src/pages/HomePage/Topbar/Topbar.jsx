@@ -1,31 +1,50 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Layout, Menu, Typography } from 'antd';
+import { Link } from 'react-router-dom';
 import './Topbar.css';
-import { Link } from 'react-router-dom'; 
 
-export default class Topbar extends Component {
-  render() {
-    return (
-        <div className="topbar">
-            <div className="container">
-                <div className="welcome">
-                    <span className="hello" style={{ fontWeight: 'bold', fontStyle: 'italic' }}>Welcome</span>
-                    <span>Please</span>
-                    <Link to="/Login" className="login" style={{ fontWeight: 'bold' }}> Log in</Link>
-                    <Link to="/Register" className="register" style={{ fontWeight: 'bold' }}> Register</Link>
-                </div>
-                <div className="topbar-nav">
-                    <ul className="list">
-                        <li><a href="#">My Order</a></li>
-                        <li><a href="#">My Warenkob</a></li>
-                        <li><a href="#">My account</a></li>
-                        <li><a href="#">Membership</a></li>
-                        <li><a href="#">Corporate Sourcing</a></li>
-                        <li><a href="#">Cooperation and Merchants</a></li>
-                        <li><a href="#">Merchant background</a></li>                  
-                    </ul>
-                </div>
-            </div>
-     </div>
-    )
-  }
-}
+const { Text } = Typography;
+
+const Topbar = () => {
+  return (
+    <div className="topbar">
+      <div className="topbar-welcome">
+        <Text className="hello" strong italic>
+          Welcome
+        </Text>
+        <span>Please</span>
+        <Link to="/Login" className="login">
+          <strong>Log in</strong>
+        </Link>
+        <Link to="/Register" className="register">
+          <strong>Register</strong>
+        </Link>
+      </div>
+      <Menu mode="horizontal" className="topbar-menu">
+        <Menu.Item key="order">
+          <a href="#">My Order</a>
+        </Menu.Item>
+        <Menu.Item key="warenkorb">
+          <a href="#">My Warenkob</a>
+        </Menu.Item>
+        <Menu.Item key="account">
+          <a href="#">My Account</a>
+        </Menu.Item>
+        <Menu.Item key="membership">
+          <a href="#">Membership</a>
+        </Menu.Item>
+        <Menu.Item key="corporate">
+          <a href="#">Corporate Sourcing</a>
+        </Menu.Item>
+        <Menu.Item key="cooperation">
+          <a href="#">Cooperation and Merchants</a>
+        </Menu.Item>
+        <Menu.Item key="background">
+          <a href="#">Merchant Background</a>
+        </Menu.Item>
+      </Menu>
+    </div>
+  );
+};
+
+export default Topbar;

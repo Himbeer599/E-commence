@@ -1,58 +1,53 @@
-.topbar{
-    height: 30px;
-    background-color: #ececec;
-}
-    .container{
-        display:flex;
-        /* width: 1190px; */
-        margin: 0 auto;
-        height: 30px;
-        width: 100%;
-    }
-        .welcome {
-            height: 30px;
-            /* align-items: center; */
-            line-height: 30px;
-            font-size: 0px;
-            color: #666;
-        }
-                .welcome span, .welcome a {
-                    font-size: 12px;
-                }
-                .welcome .hello {
-                    margin-right: 10px;
-                }
-                .welcome .login {
-                    padding-right: 10px;
-                    border-right: 1px solid #666;
-                }
-                .welcome .register {
-                    padding-left: 10px;
-                }
-        .topbar-nav {
-                display: flex;
-                justify-content: flex-end;
-                padding-right:2px
-        }
-                .topbar-nav .list {
-                    display: flex;
-                    align-items: center;
-                    height: 30px;
-                    padding: 0px;
-                    list-style: none;
-                    margin-left: 300px;
-                    
-                }
-                .topbar-nav .list li a {
-                    padding: 0 15px;
-                    border-right: 1px solid #666;
-                    text-decoration: none;
-                    color:inherit;
-                }
-                .topbar-nav .list li:first-child a {
-                    padding-left: 0px;
-                }
-                .topbar-nav .list li:last-child a {
-                    padding-right: 0px;
-                    border-right: none;
-                }
+.topbar {
+    background-color: #f0f0f0;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .topbar-welcome {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .hello {
+    font-weight: bold;
+    font-style: italic;
+    margin-right: 8px;
+  }
+  
+  .login, .register {
+    margin-left: 8px;
+    color: #1890ff;
+    text-decoration: none;
+  }
+  
+  .login:hover, .register:hover {
+    text-decoration: underline;
+  }
+  
+  .topbar-menu {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    background: transparent;
+    border: none;
+  }
+  
+  .topbar-menu .ant-menu-item {
+    margin: 0 8px;
+  }
+  
+  .topbar-menu .ant-menu-item a {
+    color: #000;
+    text-decoration: none;
+  }
+  
+  .topbar-menu .ant-menu-item a:hover {
+    color: #1890ff;
+    text-decoration: underline;
+  }
+  
