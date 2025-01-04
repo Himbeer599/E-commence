@@ -7,7 +7,7 @@ const SlideNav = () => {
     useEffect(() => {
         const fetchMenuItems = async () => {
             try {
-                const response = await fetch('http://192.168.2.31:5000/api/products/sidenavi');
+                const response = await fetch('http://192.168.2.52:5000/api/products/sidenavi');
                 const data = await response.json();
                 setMenuItems(data);
             } catch (error) {

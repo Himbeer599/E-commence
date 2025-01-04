@@ -15,7 +15,7 @@ const ProductListingPage = ()=>{
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch('http://192.168.2.31:5000/api/products/productslist');
+                const response = await fetch('http://192.168.2.52:5000/api/products/productslist');
                 const data = await response.json();
                 setProductsData(data); 
                 setFilteredProducts(data);

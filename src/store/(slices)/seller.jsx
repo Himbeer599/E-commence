@@ -19,7 +19,7 @@ const sellerSlice = createSlice({
 const{setNaviList} = sellerSlice.actions
 const fetchNaviList = () => {
     return async(dispatch) =>{
-        const res = await fetch('http://192.168.2.31:5000/api/seller/firstnavi')
+        const res = await fetch('http://192.168.2.52:5000/api/seller/firstnavi')
         const data = await res.json();
         // console.log(data)
         dispatch(setNaviList(data))
@@ -28,7 +28,7 @@ const fetchNaviList = () => {
 
 // const fetchMenuItems = async (dispatch) => {
 //     try {
-//         const response = await fetch('http://192.168.2.31:5000/api/seller/firstnavi');
+//         const response = await fetch('http://192.168.2.52:5000/api/seller/firstnavi');
 //         const data = await response.json();
 //         dispatch(setFoodsList(res.data));
 //     } catch (error) {

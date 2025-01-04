@@ -13,7 +13,7 @@ const Sidebar = ({ menus: initialMenus  }) => {
   useEffect(() => {
           const fetchMenus = async () => {
               try {
-                  const response = await fetch('http://192.168.2.31:5000/api/seller/menus');
+                  const response = await fetch('http://192.168.2.52:5000/api/seller/menus');
                   if (!response.ok) {
                     throw new Error('Failed to fetch menus');
                   }

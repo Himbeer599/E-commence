@@ -101,12 +101,12 @@ const ProductPage = () => {
         const fetchData = async (searchTerm) => {
             try {
                 console.log('searchTerm', searchTerm);
-                // const response = await fetch('http://192.168.2.31:5000/api/products');
-                const response = await fetch(`http://192.168.2.31:5000/api/products?search=${encodeURIComponent(searchTerm)}`);
+                // const response = await fetch('http://192.168.2.52:5000/api/products');
+                const response = await fetch(`http://192.168.2.52:5000/api/products?search=${encodeURIComponent(searchTerm)}`);
                 const productsData = await response.json();
                 console.log('backend data based on searchquery:', productsData);
                 
-                const filterResponse = await fetch(`http://192.168.2.31:5000/api/products/filter?search=${encodeURIComponent(searchTerm)}`);
+                const filterResponse = await fetch(`http://192.168.2.52:5000/api/products/filter?search=${encodeURIComponent(searchTerm)}`);
                 if (!filterResponse.ok) {
                     // throw new Error('Failed to fetch filter');
                     return;
