@@ -1,0 +1,92 @@
+{
+    "project": {
+      "name": "My Awesome Project",
+      "description": "A modern web application that follows best practices in software development. The front-end is built with React, while the back-end is powered by Node.js and Express.",
+      "version": "1.0.0",
+      "author": "Your Name or Team Name"
+    },
+    "tech_stack": {
+      "frontend": {
+        "framework": "React",
+        "language": "TypeScript",
+        "styling": "Tailwind CSS",
+        "testing": ["Jest", "React Testing Library"]
+      },
+      "backend": {
+        "framework": "Express",
+        "language": "TypeScript",
+        "database": "MongoDB",
+        "testing": ["Mocha", "Chai"]
+      },
+      "tools": ["ESLint", "Prettier", "Webpack", "Docker"]
+    },
+    "file_structure": {
+      "src": {
+        "description": "The main source code directory",
+        "subdirectories": {
+          "components": "Reusable React components",
+          "pages": "Page-level components for routing",
+          "utils": "Utility functions",
+          "services": "API integrations or service calls",
+          "styles": "Global styles or theme configurations",
+          "types": "Global type definitions or interface declarations"
+        }
+      },
+      "public": {
+        "description": "Static assets such as images, fonts, and the index.html"
+      },
+      "tests": {
+        "description": "Unit and integration test files for the project"
+      }
+    },
+    "rules": [
+      {
+        "name": "Ignore Temporary and Build Files",
+        "description": "Cursor should ignore files that are not relevant for development.",
+        "patterns": [
+          "**/node_modules/**",
+          "**/dist/**",
+          "**/build/**",
+          "**/*.log",
+          "**/.env*",
+          "**/.DS_Store"
+        ]
+      },
+      {
+        "name": "Enforce Code Style",
+        "description": "Ensure consistent formatting and linting.",
+        "patterns": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.json", "**/*.css"],
+        "actions": ["runPrettier", "runESLint"]
+      },
+      {
+        "name": "TypeScript Type Definitions",
+        "description": "Ensure that TypeScript type definitions follow conventions.",
+        "patterns": ["**/*.ts", "**/*.tsx"],
+        "actions": [
+          "All functions and components must have explicit type annotations.",
+          "The use of 'any' is prohibited unless explicitly justified.",
+          "Prefer 'interface' over 'type' for object types unless necessary.",
+          "Ensure exhaustive handling of union types."
+        ]
+      },
+      {
+        "name": "Generate API Documentation",
+        "description": "Generate and maintain documentation for API endpoints.",
+        "patterns": ["src/services/**/*.ts"],
+        "actions": ["generateDocumentation"]
+      },
+      {
+        "name": "Run Tests on Commit",
+        "description": "Automatically run tests before committing code.",
+        "patterns": ["**/*.test.ts", "**/*.test.js"],
+        "actions": ["runTests"]
+      },
+      {
+        "name": "Validate Environment Variables",
+        "description": "Ensure .env files contain all required variables.",
+        "patterns": [".env", ".env.example"],
+        "actions": ["validateEnv"]
+      }
+    ]
+  }
+  

@@ -1,44 +1,72 @@
 /* Bestseller Section */
 .bestseller {
-    /* padding: 20px; */
+    /* padding: 40px 0 20px; */
     text-align: center;
-    box-sizing: border-box;
-    margin-top: 10px;
-    /* height: 10%; */
-    overflow: hidden;
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-bottom: 5px;
 }
 
 /* Bestseller Title */
 .bestseller h2 {
     font-size: 2rem;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     color: #333;
+    text-align: center;
 }
 
-/* Wrapper for the bestseller items and scroll buttons */
-.bestseller-wrapper {
-    display: flex;
-    align-items: center;
-    overflow: hidden;
+/* Container for Bestseller Items */
+.bestseller-container {
     position: relative;
-    padding: 0 20px; /* Space for scroll buttons */
+    padding: 0 40px;
+    margin: 0 auto;
+    overflow: hidden; /* 隐藏超出部分 */
 }
 
-/* Scroll buttons */
-.scroll-left,
-.scroll-right {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 1.5rem;
-    transition: background-color 0.3s;
+/* 商品列表容器 */
+.bestseller-items {
+    display: flex;
+    gap: 20px;
+    overflow-x: hidden; /* 隐藏水平滚动条 */
+    white-space: nowrap; /* 防止换行 */
+    scroll-behavior: smooth;
+    padding: 10px 0;
+}
+
+/* Individual Bestseller Item */
+.bestseller-item {
+    flex: 0 0 calc(25% - 15px); /* 确保每行只显示4个商品 */
+    width: calc(25% - 15px);
+    min-width: 280px;
+    display: inline-block; /* 保持在同一行 */
+    vertical-align: top;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.bestseller-item:hover {
+    transform: translateY(-5px);
+}
+
+/* 导航按钮 */
+.scroll-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 1;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
 }
 
 .scroll-left {
@@ -49,68 +77,42 @@
     right: 0;
 }
 
-.scroll-left:hover,
-.scroll-right:hover {
-    background-color: #45a049;
+.scroll-button:hover {
+    background: rgba(255,255,255,1);
 }
 
-/* Container for Bestseller Items */
-.bestseller-container {
-    display: flex;
-    padding: 10px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    cursor: grab;
-}
-
-/* Scrolling styles */
-.bestseller-container:active {
-    cursor: grabbing;
-}
-
-/* Individual Bestseller Item */
-.bestseller-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-    min-width: 200px;
-    margin-right: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Image Style */
+/* 商品图片样式 */
 .bestseller-item img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
 }
 
-/* Title Style */
+/* 商品信息样式 */
 .bestseller-item h3 {
     font-size: 1.25rem;
     margin: 10px 0;
+    white-space: normal; /* 允许标题换行 */
 }
 
-/* Price Style */
 .price {
     font-size: 1.15rem;
     color: #e91e63;
+    margin: 10px 0;
 }
 
-/* Button Style */
-.buy-now {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .bestseller-item {
+        flex: 0 0 calc(33.333% - 15px);
+        width: calc(33.333% - 15px);
+    }
 }
 
-/* Button Hover Effect */
-.buy-now:hover {
-    background-color: #45a049;
+@media (max-width: 768px) {
+    .bestseller-item {
+        flex: 0 0 calc(50% - 15px);
+        width: calc(50% - 15px);
+    }
 }

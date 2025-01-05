@@ -1,0 +1,38 @@
+.searchbarContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* 控制类别选择器和搜索框之间的间距 */
+  width: 100%;
+  padding: 16px;
+}
+
+.categorySelect {
+  width: 200px; /* 调整类别选择器的宽度 */
+  flex-shrink: 0; /* 防止宽度被压缩 */
+}
+
+.searchInputWrapper {
+  display: flex;
+  flex: 1;
+  gap: 8px; /* 控制搜索框和按钮之间的间距 */
+}
+
+.searchInput {
+  flex: 1;
+}
+
+.searchButton {
+  flex-shrink: 0; /* 防止按钮被压缩 */
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .searchbarContainer {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .categorySelect {
+    width: 100%;
+  }
+} 

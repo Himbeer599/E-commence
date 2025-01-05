@@ -1,0 +1,20 @@
+.rangeContainer {
+  padding: 0 16px;
+}
+
+.inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.separator {
+  color: #999;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+} 

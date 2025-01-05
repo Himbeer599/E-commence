@@ -48,14 +48,13 @@ const ProductSchema = new mongoose.Schema({
     name: { type: String, required: true },
     category: {type: String, required: true},
     price: { type: Number, required: true },
-    brand:{type: String, required: true},
-    cleaningType:{type: String, required: true},
+    brand: {type: String, required: true},
+    cleaningType: {type: String, required: true},
     energyEfficiency: { type: String, required: true },
     countryOfManufacture: { type: String, required: true },
     productType: { type: String, required: true },
     color: { type: String, required: true },
     feature: { type: String, required: true },
-
 });
 
 const ProductOtherSchema = new mongoose.Schema({
@@ -68,7 +67,7 @@ const ProductOtherSchema = new mongoose.Schema({
 
 const SideNavi = productsDbConnection.model('sidenavi', ProductOtherSchema, 'sidenavi'); // 使用 Products 数据库的连接
 const Bestseller = productsDbConnection.model('Bestseller', ProductOtherSchema, 'Bestseller'); // 使用 Products 数据库的连接
-const ProductsList = productsDbConnection.model('products', ProductSchema, 'products');
+const ProductsList = productsDbConnection.model('productslist', ProductSchema, 'productslist');
 // const Login = productsDbConnection.model('users_register_database', UserSchema, 'users_register_database');
 
 // 添加name
@@ -221,21 +220,21 @@ const filter3 = [
 ];
 
 app.get('/api/products', async (req, res) => {
-    const searchTerm = req.query.search ? req.query.search.toLowerCase() : '';
-    console.log('searchTerm in searchproducts:',searchTerm)
     try {
-        const filteredData = await ProductsList.find({
+        const { search } = req.query;
+        const query = search ? {
             $or: [
-                { brand: { $regex: searchTerm, $options: 'i' } },
-                { productType: { $regex: searchTerm, $options: 'i' } },
-                // { name: { $regex: searchTerm, $options: 'i' } }
+                { brand: { $regex: search, $options: 'i' } },
+                { productType: { $regex: search, $options: 'i' } },
+                { name: { $regex: search, $options: 'i' } }
             ]
-        });
-        // console.log(filteredData);能输出，已验证
-        res.status(200).json(filteredData);
+        } : {};
+
+        const products = await ProductsList.find(query);
+        res.status(200).json(products);
     } catch (error) {
-        console.log("333333333333")
-        res.status(500).json({ message: 'Error fetching all products.', error });
+        console.error('Error searching products:', error);
+        res.status(500).json({ message: 'Error searching products', error });
     }
 });
 
@@ -301,8 +300,94 @@ app.get('/api/seller/menus', async (req, res) => {
     }
 });
 
+// 为每个数据库连接添加监听器
+[usersDbConnection, sellerDbConnection, productsDbConnection].forEach((connection, index) => {
+  const dbNames = ['users_register_database', 'seller', 'Products'];
+  
+  connection.on('connected', () => {
+    console.log(`Successfully connected to ${dbNames[index]} database`);
+  });
+
+  connection.on('error', (err) => {
+    console.error(`Error connecting to ${dbNames[index]} database:`, err);
+  });
+
+  connection.on('disconnected', () => {
+    console.log(`Disconnected from ${dbNames[index]} database`);
+  });
+});
+
 app.listen(PORT, () => {
-    console.log(`Server is running on http://192.168.2.31:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
+});
+
+// 获取分页产品列表
+app.get('/api/products/productslist', async (req, res) => {
+    try {
+        const page = parseInt(req.query.page) || 1;
+        const pageSize = parseInt(req.query.pageSize) || 10;
+        const skip = (page - 1) * pageSize;
+
+        // 获取总数量
+        const total = await ProductsList.countDocuments();
+        
+        // 获取分页数据
+        const products = await ProductsList.find()
+            .skip(skip)
+            .limit(pageSize);
+
+        res.status(200).json({
+            products,
+            pagination: {
+                total,
+                page,
+                pageSize,
+                totalPages: Math.ceil(total / pageSize)
+            }
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching products list', error });
+    }
+});
+
+// 获取产品类型的 API 端点
+app.get('/api/products/types', async (req, res) => {
+    try {
+        const types = await ProductsList.distinct('productType');
+        res.status(200).json(types);
+    } catch (error) {
+        res.status(500).json({ 
+            message: '获取产品类型失败', 
+            error: error.message 
+        });
+    }
+});
+
+// 获取产品价格范围
+app.get('/api/products/price-range', async (req, res) => {
+    try {
+        const priceStats = await ProductsList.aggregate([
+            {
+                $group: {
+                    _id: null,
+                    minPrice: { $min: "$price" },
+                    maxPrice: { $max: "$price" }
+                }
+            }
+        ]);
+
+        if (priceStats.length > 0) {
+            res.status(200).json({
+                min: Math.floor(priceStats[0].minPrice), // 向下取整
+                max: Math.ceil(priceStats[0].maxPrice)   // 向上取整
+            });
+        } else {
+            res.status(200).json({ min: 0, max: 0 });
+        }
+    } catch (error) {
+        console.error('Error fetching price range:', error);
+        res.status(500).json({ message: 'Error fetching price range', error });
+    }
 });
 
 

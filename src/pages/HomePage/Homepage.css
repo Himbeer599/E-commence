@@ -1,46 +1,65 @@
-.homepage-layout {
-  margin: 0;
-  padding: 0;
-  font-family: 'Helvetica', sans-serif;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+/* 整体布局 */
+.min-h-screen {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-.homepage-topbar {
-  background: #f0f0f0;
-  padding: 8px;
+/* 内容区域 */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  margin-bottom: 0;
+  position: relative;
 }
 
-.homepage-header {
-  background: lightcyan;
-  color: white;
-  padding: 16px;
+/* Layout.Content 的样式 */
+.ant-layout-content {
+  padding: 1rem 0 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+  background-color: #f5f5f5;
 }
 
-.homepage-menu {
-  background: #ffffff;
-  padding: 8px;
-  border-bottom: 1px solid #f0f0f0;
+/* Header 搜索框 */
+.header-search {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 1rem;
 }
 
-.homepage-main-content {
-  padding: 24px;
-  background: #fafafa;
-  flex: 1;
+.search-input {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-.homepage-best-seller {
-  padding: 16px;
-  background: lightcyan;
-}
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
 
-.homepage-footer {
-  text-align: center;
-  background: #001529;
-  color: white;
-  padding: 16px;
+  .ant-layout-content {
+    padding: 0.5rem 0 !important;
+    gap: 1rem;
+  }
+
+  .carousel-content {
+    height: 300px;
+  }
+
+  .carousel-text h2 {
+    font-size: 1.8rem;
+  }
+
+  .carousel-text p {
+    font-size: 1rem;
+  }
 }

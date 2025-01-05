@@ -1,6 +1,0 @@
-export { default as Button } from './Button/Button'
-export { default as Input } from './Input/Input'
-export{default as Sidebar} from './Sidebar/Sidebar'
-export{default as Searchbox} from './Search/searchbox'
-export{default as SortSelect} from './SortSelect/SortSelect'
-export{default as Pagination} from './Pagination/Pagination'
